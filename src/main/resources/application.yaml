@@ -1,0 +1,18 @@
+spring:
+    application:
+        name: blog
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://localhost:3307/hotel
+        username: root
+        password: senha
+
+jpa:
+    hibernate:
+        ddl-auto: update
+    show-sql: true
+    properties:
+        hibernate:
+            dialect: org.hibernate.dialect.MySQL8Dialect
+
+javax.persistence.jdbc.url: jdbc:mysql://seu-endereco-do-banco-de-dados:3306/nome-do-banco-de-dados
