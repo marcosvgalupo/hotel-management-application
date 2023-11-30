@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <title>HOTEL BEIRA-MAR</title>
+</head>
+  
+<body>
+  <main>
+    <div class="hotel-header">
+        <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
+    </div>
+
+<a class="botao-voltar" href="/home"><img src="styles/seta-esquerda.png"></a>
+<div class="content">
+  <div class="login-field">
+    <form action="/cadastrar-hospede" method="post" class="form-hospede">
+  
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required placeholder="Nome Funcionário">
+      
+        <label for="cpf">Cnh:</label>
+        <input type="text" id="cpf" name="cpf" required placeholder="Cnh Funcionário">
+      
+        <label for="telefone">Salário:</label>
+        <input type="text" id="telefone" name="telefone" required placeholder="Salário Funcionário">
+
+        <label for="telefone">ID gerente:</label>
+        <select id="" name="sexo" class="input-sexo" required>
+          <option value="" disabled selected>ID gerente</option>
+          <option value="masculino">12313</option>
+          <option value="feminino">13231</option>
+        </select>
+        
+      
+        <button type="submit" >Adicionar Funcionário</button>
+      
+        <div class="error-message" id="error-message"></div>
+      </form>
+      
+      
+  </div>
+</div>
+</main>
+<footer>
+</footer>
+</body>
+</html>
