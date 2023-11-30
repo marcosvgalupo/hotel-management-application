@@ -1,11 +1,11 @@
 spring:
     application:
-        name: blog
+        name: hotel
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://localhost:3307/hotel
+        url: jdbc:mysql://roundhouse.proxy.rlwy.net:20445/railway
         username: root
-        password: senha
+        password: E5eDDbEAEdfHhCa1E4hbhhbFGFGEB1Db
 
 jpa:
     hibernate:
@@ -15,4 +15,4 @@ jpa:
         hibernate:
             dialect: org.hibernate.dialect.MySQL8Dialect
 
-javax.persistence.jdbc.url: jdbc:mysql://seu-endereco-do-banco-de-dados:3306/nome-do-banco-de-dados
+javax.persistence.jdbc.url: jdbc:mysql://roundhouse.proxy.rlwy.net:20445/railway
