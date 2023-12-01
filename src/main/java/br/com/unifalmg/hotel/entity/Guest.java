@@ -15,8 +15,8 @@ import java.io.Serializable;
 public class Guest implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idHospede")
-    private Integer id;
+
+    private Integer id_guest;
 
     private String name;
 
@@ -26,7 +26,7 @@ public class Guest implements Serializable {
 
     private String cpf;
 
-    private Character sex;
+    private Character gender;
 
     private String cellphone;
 
