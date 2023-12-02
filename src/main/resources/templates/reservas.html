@@ -39,26 +39,13 @@
           </tr>
       </thead>
       <tbody>
-          <!-- Adicione as linhas da tabela com os dados correspondentes -->
-          <tr>
-              <td>001</td>
-              <td>101</td>
-              <td>Suíte Luxo</td>
-              <td>201</td>
-              <td>2023-01-01</td>
-              <td>2023-01-07</td>
-              <td>Confirmada</td>
-          </tr>
-          <tr>
-              <td>002</td>
-              <td>102</td>
-              <td>Quarto Standard</td>
-              <td>202</td>
-              <td>2023-02-15</td>
-              <td>2023-02-20</td>
-              <td>Pendente</td>
-          </tr>
-          <!-- Adicione mais linhas conforme necessário -->
+      <tr th:each="reservation : ${reservations}">
+          <td><span th:text="${reservation.name}"></span></td>
+          <td><span th:text="${reservation.last_name}"></span></td>
+          <td><span th:text="${reservation.cpf}"></span></td>
+          <td><span th:text="${reservation.cellphone}"></span></td>
+          <td><span th:text="${reservation.gender}"></span></td>
+      </tr>
       </tbody>
   </table>
 </div>

@@ -28,4 +28,8 @@ public class GuestService {
         );
     }
 
+    public void salvarHospede(Guest hospede) {
+        repository.save(hospede);
+    }
+
 }
