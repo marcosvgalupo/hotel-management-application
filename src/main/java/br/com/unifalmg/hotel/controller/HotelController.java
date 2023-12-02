@@ -105,4 +105,13 @@ public class HotelController {
         return "redirect:/guests";
     }
 
+    @GetMapping("/deletar-hospede/{id}")
+    public String deletarHospede(@PathVariable Integer id) {
+        // Chame o serviço para deletar o Guest pelo ID
+        guestService.deletarHospede(id);
+
+        // Redirecione para a página desejada após a exclusão (por exemplo, a página de listagem de hóspedes)
+        return "redirect:/guests";
+    }
+
 }

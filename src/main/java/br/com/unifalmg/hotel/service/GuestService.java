@@ -32,4 +32,12 @@ public class GuestService {
         repository.save(hospede);
     }
 
+    public void deletarHospede(Integer id) {
+        // Verifique se o Guest com o ID fornecido existe antes de tentar deletar
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+        }
+        // Você pode adicionar lógica adicional, como lançar uma exceção se o Guest não existir
+    }
+
 }

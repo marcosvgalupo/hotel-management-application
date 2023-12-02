@@ -427,3 +427,13 @@ th {
     background-color: #f2f2f2;
 }
 
+.delete-link {
+    width: 4em;
+    height: 3vh;
+}
+
+.delete-link a {
+    width: 1em;
+    height: 2vh;
+    font-size: 1.5vh;
+}
