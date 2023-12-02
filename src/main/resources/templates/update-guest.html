@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <title>HOTEL BEIRA-MAR</title>
+</head>
+
+<body>
+<main>
+    <div class="hotel-header">
+        <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
+    </div>
+
+    <a class="botao-voltar" href="/home"><img src="seta-esquerda.png"></a>
+    <div class="content">
+        <div class="login-field">
+        <h2>Atualizar Hóspede</h2>
+        <form action="/saveUpdatedGuest" method="post">
+            <input type="hidden" th:field="${guest.id_guest}" name="id" />
+            <label for="nome">Nome:</label>
+            <input type="text" th:field="${guest.name}" name="nome" required />
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" th:field="${guest.last_name}" name="sobrenome" required />
+            <label for="cpf">CPF:</label>
+            <input type="text" th:field="${guest.cpf}" name="cpf" required />
+            <label for="telefone">Telefone:</label>
+            <input type="text" th:field="${guest.cellphone}" name="telefone" required />
+            <label for="sexo">Sexo:</label>
+            <input type="text" th:field="${guest.gender}" name="sexo" required />
+
+            <!-- Add other fields (sobrenome, cpf, telefone, sexo) as needed -->
+
+            <button type="submit">Salvar Atualizações</button>
+        </form>
+        </div>
+    </div>
+</main>
+<footer>
+</footer>
+</body>
+
+</html>

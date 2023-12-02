@@ -8,7 +8,7 @@ import lombok.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "railway", name = "manager")
+@Table(schema = "railway", name = "Manager")
 public class Manager extends Employee{
 
     @Id
