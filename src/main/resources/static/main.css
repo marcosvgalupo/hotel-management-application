@@ -1,0 +1,429 @@
+* {
+    margin: 0;
+    font-family: 'Montserrat';
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #e8e8e8;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.hotel-header {
+    background-color: #990100;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hotel-header-title {
+    text-align: center;
+    font-size: 2em;
+    color: #f6f6f6;
+}
+
+.hotel-header-title:hover {
+    color: #e8e8e8;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    background-color: #990100;
+    width: 100%;
+    height: 10vh;
+}
+
+
+footer h1:hover {
+    color: #08a0ff;
+}
+
+.footer-links{
+    color: white;
+    text-decoration: none; 
+    position: relative; 
+}
+
+.footer-links:hover {
+    text-decoration: none; 
+}
+
+.footer-links::before {
+    content: ''; 
+    position: absolute;
+    width: 100%;
+    height: 0.1em; 
+    bottom: 0;
+    left: 0;
+    background-color: white; 
+    transform: scaleX(0); 
+    transition: transform 0.3s ease;
+  }
+  
+
+  .footer-links:hover::before {
+    transform: scaleX(1); 
+    text-decoration: none;
+  }
+  
+  
+  .footer-links:active::before {
+    transform-origin: bottom; 
+    transform: scaleX(1); 
+  }
+
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 80vh;
+}
+
+
+.login-button p {
+    font-size: 40px;
+    color: white;   
+}
+
+.login-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #e8e8e8;
+    width: 60%;
+    margin: 30px auto;
+    height: 400px;
+}
+
+.choose-field {
+    /*overflow: auto;*/
+    background-color: rgb(213, 212, 212);
+    width: 90%;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    position: relative;
+    padding-top: 0;
+    box-shadow: 0 0.2px 0.2px 0.5px rgba(0, 0, 0, 1); /* Adiciona uma sombra leve */
+    /* gap: 5em; */
+}
+
+.table-div {
+    width: 100%;
+    overflow: auto;
+}
+
+#choose-filed-home, #reserva-choose-field {
+    gap: 5em;
+}
+
+.choose-field p{
+    margin-top: 2em;
+    color: #000;
+    font-size: 2em;
+}
+
+.escolhas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-field a {
+    background-color: #990100;
+    text-decoration: none;
+    margin: auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-align: center;
+    width: 300px;
+    height: 100px;
+    color: white;
+    border-radius: 1.5em;
+}
+
+.choose-field a:hover {
+    background-color: #cd3333;
+    color: rgb(207, 207, 207);
+}
+
+.tabelas-hospedes {
+    background-color: #b90504;
+    width: 100%;
+    height: 10vh;
+    margin: auto;
+    position: absolute;
+    top: 0;
+}
+
+.botao-voltar {
+    text-decoration: none;
+    margin: 0.4em 0 0 0.4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    text-align: center;
+    width: 5%;
+    height: 2em;
+}
+
+.botao-voltar img {
+    width: 50%;
+    height: 2.3em;
+}
+
+form {
+    position: relative;
+    margin: 20px 50px;
+    display: flex;
+    align-items:flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+label{
+    margin-left: 0;
+    font-size: 1.5em;
+    color: #000;
+}
+
+input {
+    margin-left: 0;
+    width: 100%;
+    height: 3em;
+    border: 0;
+    outline: none;
+    border-radius: 1em;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+    font-size: 2em;
+}
+
+.input-hospedes::placeholder {
+  font-size: 0.7em;
+  margin-left: 1em;
+}
+
+.input-hospedes {
+    padding-left: 1em;
+    margin-left: 1em;
+    width: 13%;
+    height: 1.3em;
+    border: 0;
+    outline: none;
+    border-radius: 1em;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+    font-size: 2em;
+}
+
+#inputSexo {
+    width: 5%;
+    margin-left: 1em;
+    height: 2em;
+    border: 0;
+    outline: none;
+    border-radius: 1em;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+}
+
+button{
+    border: 0;
+    outline: none;
+    border-radius: 1em;
+    background-color: #161616;
+    color: #e8e8e8;
+    margin: 0 auto;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+.form-hospede button, .login-index {
+    font-size: 1.2em;
+    height: 2.5em;
+    min-width: 60%;
+    margin-left: 2.7em;
+    box-shadow: 0 2px 4px rgba(255, 255, 250, 0.3); /* Adiciona uma sombra leve */
+    position: relative;
+    left: -5%;
+}
+
+.user-box, .password-box{
+    display:flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    gap: 1em;
+    width:150%;
+    height: 12vh;
+    margin-bottom: 20px;
+    position: relative;
+    left: -25%;
+}
+
+
+.campos-hospedes {
+    width: 40%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.campos-hospedes a {
+    background-color: #990100;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: auto 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100px;
+    height: 40px;
+    color: white;
+}
+
+.input-pesquisa {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: #b90504;
+    height: 10vh;
+}
+
+#txtBusca {
+    border: #1e7bb5 3px solid;
+}
+
+.input-pesquisa input {
+    border: #990100 3px solid;
+}
+
+.form-hospede {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 80vh;
+    gap: 0.5em;
+}
+
+.form-hospede select, .form-reserva select {
+    margin: auto;
+    width: 40%;
+    height: 2.5em;
+    border: 0;
+    outline: none;
+    border-radius: 1em;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-hospede button {
+    margin: 1em auto;
+}
+
+.campos-reserva {
+    width: 100%;
+    height: 20px;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 10px;
+}
+
+.campos-reserva a {
+    background-color: #4c81ac;
+    text-decoration: none;
+    margin: auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 300px;
+    height: 40px;
+    color: white;
+    background-color: #990100;
+}
+
+.button-pesquisa{
+    width: 5%;
+    height: 3vh;
+    margin-left: 1em;
+}
+
+.form-reserva {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+    gap: 1.5em;
+}
+
+.form-reserva div {
+    height: 60vh;
+    width: 30%;
+}
+
+.nova-reserva {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+}
+
+.form-reserva input {
+    margin-bottom: 1em;
+}
+
+.form-reserva button {
+    height: 5vh;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+

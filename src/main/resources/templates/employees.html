@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="main.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
@@ -17,7 +17,7 @@
         <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
     </div>
 
-<a class="botao-voltar" href="/home"><img src="styles/seta-esquerda.png"></a>
+<a class="botao-voltar" href="/home"><img src="seta-esquerda.png"></a>
 <div class="content">
   <div class="choose-field">
     <div class="tabelas-hospedes">
@@ -49,20 +49,12 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Adicione as linhas da tabela com os dados correspondentes -->
-            <tr>
-                <td>Ana</td>
-                <td>123456789-00</td>
-                <td>R$ 5.000,00</td>
-                <td>001</td>
-            </tr>
-            <tr>
-                <td>Carlos</td>
-                <td>987654321-01</td>
-                <td>R$ 7.500,00</td>
-                <td>002</td>
-            </tr>
-            <!-- Adicione mais linhas conforme necessário -->
+        <tr th:each="employee : ${employees}">
+            <td><span th:text="${employee.idFuncionario}"></span></td>
+            <td><span th:text="${employee.chn}"></span></td>
+            <td><span th:text="${employee.cpf}"></span></td>
+            <td><span th:text="${employee.idGerente}"></span></td>
+        </tr>
         </tbody>
     </table>
     </div>
