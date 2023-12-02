@@ -16,19 +16,21 @@ import java.io.Serializable;
 public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idFuncionario;
+    private Integer id_employee;
 
-    private String nome;
+    private String name;
 
-    private String sobrenome;
+    private String last_name;
 
     private Integer cnh;
 
+
     @ManyToOne
-    @JoinColumn(name = "idGerente")
+    @JoinColumn(name = "id_manager_id_manager")
     private Manager id_manager;
 
-    private Character sexo;
+
+    private Character gender;
 
     private Integer cpf;
 }

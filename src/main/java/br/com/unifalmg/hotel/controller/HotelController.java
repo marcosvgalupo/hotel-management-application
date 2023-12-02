@@ -72,7 +72,7 @@ public class HotelController {
             return "/home";
         } else {
             model.addAttribute("mensagem", "Falha na autenticação");
-            return "/";
+            return "/index";
         }
     }
 
