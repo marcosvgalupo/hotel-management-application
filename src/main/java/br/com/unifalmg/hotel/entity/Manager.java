@@ -3,17 +3,18 @@ package br.com.unifalmg.hotel.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.io.Serializable;
+
 @Setter
 @Getter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(schema = "railway", name = "Manager")
-public class Manager extends Employee{
+public class Manager implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Manager id_manager;
+    private Integer id_manager;
 
     private String name;
 
