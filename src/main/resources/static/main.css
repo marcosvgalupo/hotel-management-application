@@ -311,11 +311,19 @@ button:hover{
 }
 
 .input-pesquisa {
+    background-color: #b90504;
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-content: center;
+}
+
+.input-pesquisa form {
     display: flex;
     justify-content: left;
     align-items: center;
-    background-color: #b90504;
-    height: 10vh;
+    width: 70%;
 }
 
 #txtBusca {
@@ -437,3 +445,4 @@ th {
     height: 2vh;
     font-size: 1.5vh;
 }
+

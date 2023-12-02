@@ -10,10 +10,11 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "railway", name = "Manager")
+@Table(schema = "railway", name = "manager")
 public class Manager implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_manager;
 
     private String name;

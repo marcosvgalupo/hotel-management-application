@@ -21,19 +21,18 @@
     <div class="content">
         <div class="login-field">
         <h2>Atualizar Hóspede</h2>
-        <form action="/saveUpdatedGuest" method="post">
-            <input type="hidden" th:field="${guest.id_guest}" name="id" />
+        <form action="/saveUpdatedEmployee" method="post">
+            <input type="hidden" th:field="${employee.id_employee}" name="id" />
             <label for="nome">Nome:</label>
-            <input type="text" th:field="${guest.name}" name="nome" required />
+            <input type="text" th:field="${employee.name}" name="nome" required />
             <label for="sobrenome">Sobrenome:</label>
-            <input type="text" th:field="${guest.last_name}" name="sobrenome" required />
+            <input type="text" th:field="${employee.last_name}" name="sobrenome" required />
             <label for="cpf">CPF:</label>
-            <input type="text" th:field="${guest.cpf}" name="cpf" required />
-            <label for="telefone">Telefone:</label>
-            <input type="text" th:field="${guest.cellphone}" name="telefone" required />
+            <input type="text" th:field="${employee.cpf}" name="cpf" required />
+            <label for="cnh">Cnh:</label>
+            <input type="text" th:field="${employee.cnh}" name="telefone" required />
             <label for="sexo">Sexo:</label>
-            <input type="text" th:field="${guest.gender}" name="sexo" required />
-
+            <input type="text" th:field="${employee.gender}" name="sexo" required />
 
             <button type="submit">Salvar Atualizações</button>
         </form>
