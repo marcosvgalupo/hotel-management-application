@@ -16,18 +16,25 @@ public class Guest implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+    @Column(name = "id_guest")
     private Integer id_guest;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "last_name")
     private String last_name;
 
+    @Column(name = "status")
     private Integer status;
 
+    @Column(name = "cpf")
     private String cpf;
 
+    @Column(name = "gender")
     private Character gender;
 
+    @Column(name = "cellphone")
     private String cellphone;
 
 }
