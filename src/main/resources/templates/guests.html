@@ -60,7 +60,7 @@
                         <td class="delete-link">
                             <!-- Link para deletar o hóspede com o ID correspondente -->
                             <a th:href="@{/deleteGuest/{id}(id=${guest.id_guest})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
-
+                            <a th:href="@{/updateGuest/{id}(id=${guest.id_guest})}">^</a>
                         </td>
                     </tr>
                     </tbody>
