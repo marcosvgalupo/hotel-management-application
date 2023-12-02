@@ -34,7 +34,7 @@
                 <!-- </form> -->
             </div>
             <div class="campos-hospedes">
-                <a class="botao-adicionar" href="/adicionar">Adicionar</a>
+                <a class="botao-adicionar" href="/addGuest">Adicionar</a>
                 <a class="botao-remover" href="/hospedes">Remover</a>
                 <a class="botao-atualizar" href="/hospedes">Atualizar</a>
             </div>
@@ -57,6 +57,11 @@
                         <td><span th:text="${guest.cpf}"></span></td>
                         <td><span th:text="${guest.cellphone}"></span></td>
                         <td><span th:text="${guest.gender}"></span></td>
+                        <td class="delete-link">
+                            <!-- Link para deletar o hóspede com o ID correspondente -->
+                            <a th:href="@{/deletar-hospede/{id}(id=${guest.id_guest})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
+
+                        </td>
                     </tr>
                     </tbody>
                 </table>
