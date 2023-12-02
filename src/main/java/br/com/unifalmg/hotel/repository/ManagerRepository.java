@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface ManagerRepository extends JpaRepository<Manager, Integer> {
     @Query(
         nativeQuery = true,
-        value = "SELECT * FROM Manager WHERE " +
+        value = "SELECT * FROM manager WHERE " +
                 "UPPER(username) = UPPER(:username) " + " AND " + " UPPER(password) = UPPER(:password)"
     )
     Manager findByUsernameAndPassword(String username, String password);

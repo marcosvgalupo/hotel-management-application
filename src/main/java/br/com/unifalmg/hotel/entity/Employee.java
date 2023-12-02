@@ -25,15 +25,15 @@ public class Employee implements Serializable {
     private String last_name;
 
     @Column(name = "cnh")
-    private Integer cnh;
+    private String cnh;
 
     @ManyToOne
-    @JoinColumn(name = "id_manager_id_manager")
+    @JoinColumn(name = "id_manager")
     private Manager id_manager;
 
     @Column(name = "gender")
     private Character gender;
 
     @Column(name = "cpf")
-    private Integer cpf;
+    private String cpf;
 }

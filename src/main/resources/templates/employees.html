@@ -20,45 +20,56 @@
 <a class="botao-voltar" href="/home"><img src="seta-esquerda.png"></a>
 <div class="content">
   <div class="choose-field">
-    <div class="tabelas-hospedes">
       <div class="input-pesquisa">
-        <!-- <form action="/hospedes" method="post" class="form-hospede"> -->
-          <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="Nome"/>
-          <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="Sobrenome"/>
-          <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="CPF"/>
-          <select id="inputSexo" name="sexo" class="input-sexo">
-            <option value="" disabled selected>Sexo</option>
-            <option value="masculino">M</option>
-            <option value="feminino">F</option>
-          </select>
-          <button type="submit" class="button-pesquisa"></button>
-        <!-- </form> -->
+
+          <form action="/guests" method="post" >
+              <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="Nome"/>
+              <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="Sobrenome"/>
+              <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="CPF"/>
+              <select id="inputSexo" name="sexo" class="input-sexo">
+                  <option value="" disabled selected>Sexo</option>
+                  <option value="masculino">M</option>
+                  <option value="feminino">F</option>
+              </select>
+              <button type="submit" class="button-pesquisa"></button>
+          </form>
+
       </div>
       <div class="campos-hospedes">
         <a class="botao-adicionar" href="/addEmployee">Adicionar</a>
-        <a class="botao-remover" href="/hospedes">Remover</a>
-        <a class="botao-atualizar" href="/hospedes">Atualizar</a>
       </div>
-      <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>CHN</th>
-                <th>Salário</th>
-                <th>ID do Gerente</th>
-            </tr>
-        </thead>
-        <tbody>
-        <tr th:each="employee : ${employees}">
-            <td><span th:text="${employee.idFuncionario}"></span></td>
-            <td><span th:text="${employee.chn}"></span></td>
-            <td><span th:text="${employee.cpf}"></span></td>
-            <td><span th:text="${employee.idGerente}"></span></td>
-        </tr>
-        </tbody>
-    </table>
+        <div class="table-div">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>CNH</th>
+                        <th>CPF</th>
+                        <th>Sexo</th>
+                        <th>ID gerente</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="employee : ${employees}">
+                        <td><span th:text="${employee.id_employee}"></span></td>
+                        <td><span th:text="${employee.name}"></span></td>
+                        <td><span th:text="${employee.last_name}"></span></td>
+                        <td><span th:text="${employee.cnh}"></span></td>
+                        <td><span th:text="${employee.cpf}"></span></td>
+                        <td><span th:text="${employee.gender}"></span></td>
+                        <td><span th:text="${employee.id_manager}"></span></td>
+                        <td class="delete-link">
+                            <a th:href="@{/deleteEmployee/{id}(id=${employee.id_employee})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
+                            <a th:href="@{/updateEmployee/{id}(id=${employee.id_employee})}">^</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+        </div>
     </div>
-</div>
 </div>
 </main>
 <footer>

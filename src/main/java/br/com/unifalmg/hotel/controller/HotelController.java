@@ -136,4 +136,49 @@ public class HotelController {
         return "guests";
     }
 
+    @PostMapping("/addEmployee")
+    public String newEmployee(@RequestParam String nome,
+                           @RequestParam String sobrenome,
+                           @RequestParam String cpf,
+                           @RequestParam String cnh,
+                           @RequestParam String sexo) {
+        Employee newEmployee = Employee.builder()
+                .name(nome)
+                .last_name(sobrenome)
+                .cpf(cpf)
+                .cnh(cnh)
+                .gender(sexo.charAt(0))
+                .build();
+
+        employeeService.saveEmployee(newEmployee);
+
+        return "redirect:/empoyees";
+    }
+    @GetMapping("/deleteEmployee/{id}")
+    public String deleteEmployee(@PathVariable Integer id) {
+        employeeService.deleteEmployee(id);
+
+        return "redirect:/employees";
+    }
+
+
+
+    @GetMapping("/updateEmployee/{id}")
+    public String updateEmployee(@PathVariable Integer id, Model model) {
+        Employee existingEmployee = employeeService.findById(id);
+
+        model.addAttribute("employee", existingEmployee);
+
+        return "update-employee";
+    }
+
+
+
+    @PostMapping("/saveUpdatedEmployee")
+    public String saveUpdatedEmployee(@ModelAttribute Employee updatedEmployee) {
+        employeeService.saveEmployee(updatedEmployee);
+
+        return "redirect:/employees";
+    }
+
 }
