@@ -59,7 +59,7 @@
                         <td><span th:text="${guest.gender}"></span></td>
                         <td class="delete-link">
                             <!-- Link para deletar o hóspede com o ID correspondente -->
-                            <a th:href="@{/deletar-hospede/{id}(id=${guest.id_guest})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
+                            <a th:href="@{/deleteGuest/{id}(id=${guest.id_guest})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
 
                         </td>
                     </tr>

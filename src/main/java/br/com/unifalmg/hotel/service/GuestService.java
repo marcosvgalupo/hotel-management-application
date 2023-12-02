@@ -28,11 +28,11 @@ public class GuestService {
         );
     }
 
-    public void salvarHospede(Guest hospede) {
+    public void saveGuest(Guest hospede) {
         repository.save(hospede);
     }
 
-    public void deletarHospede(Integer id) {
+    public void deleteGuest(Integer id) {
         // Verifique se o Guest com o ID fornecido existe antes de tentar deletar
         if (repository.existsById(id)) {
             repository.deleteById(id);
