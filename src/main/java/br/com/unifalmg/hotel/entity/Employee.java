@@ -12,25 +12,28 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 
-@Table(schema = "railway", name = "Employee")
+@Table(schema = "railway", name = "employee")
 public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_employee;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "last_name")
     private String last_name;
 
+    @Column(name = "cnh")
     private Integer cnh;
-
 
     @ManyToOne
     @JoinColumn(name = "id_manager_id_manager")
     private Manager id_manager;
 
-
+    @Column(name = "gender")
     private Character gender;
 
+    @Column(name = "cpf")
     private Integer cpf;
 }

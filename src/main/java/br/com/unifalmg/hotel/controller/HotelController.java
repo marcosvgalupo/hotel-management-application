@@ -129,4 +129,11 @@ public class HotelController {
         return "redirect:/guests";
     }
 
+    @PostMapping("/guests")
+    public String findFilteredGuests(Model model, @ModelAttribute Guest guest){
+        List<Guest> filteredGuests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
+        model.addAttribute("guests", filteredGuests);
+        return "guests";
+    }
+
 }

@@ -40,4 +40,8 @@ public class GuestService {
         // Você pode adicionar lógica adicional, como lançar uma exceção se o Guest não existir
     }
 
+    public List<Guest> findByFilter(String name, String last_name, String cpf, Character gender){
+        return repository.findByFilter(name, last_name, cpf, gender);
+    }
+
 }
