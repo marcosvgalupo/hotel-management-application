@@ -15,7 +15,7 @@ public class Manager implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_manager;
+    private Integer manager_id;
 
     private String name;
 

@@ -108,7 +108,6 @@ footer h1:hover {
 }
 
 .choose-field {
-    /*overflow: auto;*/
     background-color: rgb(213, 212, 212);
     width: 90%;
     height: 70vh;
@@ -118,8 +117,7 @@ footer h1:hover {
     flex-direction: column;
     position: relative;
     padding-top: 0;
-    box-shadow: 0 0.2px 0.2px 0.5px rgba(0, 0, 0, 1); /* Adiciona uma sombra leve */
-    /* gap: 5em; */
+    box-shadow: 0 0.2px 0.2px 0.5px rgba(0, 0, 0, 1);
 }
 
 .table-div {
@@ -137,7 +135,7 @@ footer h1:hover {
     font-size: 2em;
 }
 
-.escolhas{
+.buttons-management {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -164,7 +162,7 @@ footer h1:hover {
     color: rgb(207, 207, 207);
 }
 
-.tabelas-hospedes {
+.guest-table {
     background-color: #b90504;
     width: 100%;
     height: 10vh;
@@ -173,7 +171,7 @@ footer h1:hover {
     top: 0;
 }
 
-.botao-voltar {
+.back-button {
     text-decoration: none;
     margin: 0.4em 0 0 0.4em;
     display: flex;
@@ -185,7 +183,7 @@ footer h1:hover {
     height: 2em;
 }
 
-.botao-voltar img {
+.back-button img {
     width: 50%;
     height: 2.3em;
 }
@@ -217,12 +215,12 @@ input {
     font-size: 2em;
 }
 
-.input-hospedes::placeholder {
+.guests-input::placeholder {
   font-size: 0.7em;
   margin-left: 1em;
 }
 
-.input-hospedes {
+.guests-input {
     padding-left: 1em;
     margin-left: 1em;
     width: 13%;
@@ -235,7 +233,7 @@ input {
     font-size: 2em;
 }
 
-#inputSexo {
+#gender-input {
     width: 5%;
     margin-left: 1em;
     height: 2em;
@@ -259,12 +257,12 @@ button:hover{
     cursor: pointer;
 }
 
-.form-hospede button, .login-index {
+.guest-form button, .login-index {
     font-size: 1.2em;
     height: 2.5em;
     min-width: 60%;
     margin-left: 2.7em;
-    box-shadow: 0 2px 4px rgba(255, 255, 250, 0.3); /* Adiciona uma sombra leve */
+    box-shadow: 0 2px 4px rgba(255, 255, 250, 0.3);
     position: relative;
     left: -5%;
 }
@@ -283,7 +281,7 @@ button:hover{
 }
 
 
-.campos-hospedes {
+.guest-field {
     width: 40%;
     height: 20px;
     display: flex;
@@ -294,7 +292,7 @@ button:hover{
     top: 10px;
 }
 
-.campos-hospedes a {
+.guest-field a {
     background-color: #990100;
     border-radius: 10px;
     text-decoration: none;
@@ -310,7 +308,7 @@ button:hover{
     color: white;
 }
 
-.input-pesquisa {
+.search-input {
     background-color: #b90504;
     height: 10vh;
     width: 100%;
@@ -319,22 +317,22 @@ button:hover{
     align-content: center;
 }
 
-.input-pesquisa form {
+.search-input form {
     display: flex;
     justify-content: left;
     align-items: center;
     width: 70%;
 }
 
-#txtBusca {
+#SearchTxt {
     border: #1e7bb5 3px solid;
 }
 
-.input-pesquisa input {
+.search-input input {
     border: #990100 3px solid;
 }
 
-.form-hospede {
+.guest-form {
     display: flex;
     flex-direction: column;
     width: 40%;
@@ -342,7 +340,7 @@ button:hover{
     gap: 0.5em;
 }
 
-.form-hospede select, .form-reserva select {
+.guest-form select, .reservation-form select {
     margin: auto;
     width: 40%;
     height: 2.5em;
@@ -353,11 +351,11 @@ button:hover{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.form-hospede button {
+.guest-form button {
     margin: 1em auto;
 }
 
-.campos-reserva {
+.reservation-field {
     width: 100%;
     height: 20px;
     display: flex;
@@ -369,7 +367,7 @@ button:hover{
     top: 10px;
 }
 
-.campos-reserva a {
+.reservation-field a {
     background-color: #4c81ac;
     text-decoration: none;
     margin: auto 30px;
@@ -382,16 +380,15 @@ button:hover{
     width: 300px;
     height: 40px;
     color: white;
-    background-color: #990100;
 }
 
-.button-pesquisa{
+.search-button{
     width: 5%;
     height: 3vh;
     margin-left: 1em;
 }
 
-.form-reserva {
+.reservation-form {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -400,23 +397,23 @@ button:hover{
     gap: 1.5em;
 }
 
-.form-reserva div {
+.reservation-form div {
     height: 60vh;
     width: 30%;
 }
 
-.nova-reserva {
+.new-reservation {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
 }
 
-.form-reserva input {
+.reservation-form input {
     margin-bottom: 1em;
 }
 
-.form-reserva button {
+.reservation-form button {
     height: 5vh;
 }
 
@@ -444,5 +441,6 @@ th {
     width: 1em;
     height: 2vh;
     font-size: 1.5vh;
+    display: flex;
 }
 

@@ -17,25 +17,25 @@
         <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
     </div>
 
-<a class="botao-voltar" href="/home"><img src="seta-esquerda.png"></a>
+<a class="back-button" href="/home"><img src="seta-esquerda.png"></a>
 <div class="content">
   <div class="login-field">
-    <form action="/addGuest" method="post" class="form-hospede">
+    <form action="/addGuest" method="post" class="guest-form">
   
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required placeholder="Nome Hóspede">
+        <label for="name">Nome:</label>
+        <input type="text"  name="name" required placeholder="Nome Hóspede">
       
-        <label for="sobrenome">Sobrenome:</label>
-        <input type="text" id="sobrenome" name="sobrenome" required placeholder="Sobrenome Hóspede">
+        <label for="last_name">Sobrenome:</label>
+        <input type="text" name="last_name" required placeholder="Sobrenome Hóspede">
       
         <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" required placeholder="CPF Hóspede">
+        <input type="text" name="cpf" required placeholder="CPF Hóspede">
       
-        <label for="telefone">Telefone:</label>
-        <input type="tel" id="telefone" name="telefone" required placeholder="Telefone Hóspede">
+        <label for="cellphone">Telefone:</label>
+        <input type="tel" name="cellphone" required placeholder="Telefone Hóspede">
 
-        <label for="telefone">Sexo:</label>
-        <select id="" name="sexo" class="input-sexo" required>
+        <label for="gender">Sexo:</label>
+        <select name="gender" class="input-sexo" required>
           <option value="" disabled selected>Sexo</option>
           <option value="masculino">Masculino</option>
           <option value="feminino">Feminino</option>

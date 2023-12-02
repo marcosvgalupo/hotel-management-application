@@ -17,26 +17,26 @@
         <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
     </div>
 
-    <a class="botao-voltar" href="/home"><img src="seta-esquerda.png"></a>
+    <a class="back-button" href="/home"><img src="seta-esquerda.png"></a>
     <div class="content">
         <div class="choose-field">
-            <div class="input-pesquisa">
+            <div class="search-input">
 
                 <form action="/guests" method="post" >
-                    <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="Nome"/>
-                    <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="Sobrenome"/>
-                    <input class="input-hospedes" type="text" id="txtBuscaH" placeholder="CPF"/>
-                    <select id="inputSexo" name="sexo" class="input-sexo">
+                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="Nome"/>
+                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="Sobrenome"/>
+                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="CPF"/>
+                    <select id="gender-input" name="sexo" class="input-sexo">
                         <option value="" disabled selected>Sexo</option>
                         <option value="masculino">M</option>
                         <option value="feminino">F</option>
                     </select>
-                    <button type="submit" class="button-pesquisa"></button>
+                    <button type="submit" class="search-button"></button>
                 </form>
 
             </div>
-            <div class="campos-hospedes">
-                <a class="botao-adicionar" href="/addGuest">Cadastrar</a>
+            <div class="guest-field">
+                <a href="/addGuest">Cadastrar</a>
             </div>
 
             <div class="table-div">
@@ -58,7 +58,6 @@
                         <td><span th:text="${guest.cellphone}"></span></td>
                         <td><span th:text="${guest.gender}"></span></td>
                         <td class="delete-link">
-                            <!-- Link para deletar o hóspede com o ID correspondente -->
                             <a th:href="@{/deleteGuest/{id}(id=${guest.id_guest})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
                             <a th:href="@{/updateGuest/{id}(id=${guest.id_guest})}">^</a>
                         </td>
