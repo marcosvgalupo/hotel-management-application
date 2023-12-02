@@ -1,19 +1,14 @@
 package br.com.unifalmg.hotel.controller;
 
-import br.com.unifalmg.hotel.authentication.LoginForm;
 import br.com.unifalmg.hotel.entity.Employee;
 import br.com.unifalmg.hotel.entity.Guest;
 import br.com.unifalmg.hotel.entity.Manager;
-import br.com.unifalmg.hotel.entity.Reservation;
 import br.com.unifalmg.hotel.service.GuestService;
 import br.com.unifalmg.hotel.service.ManagerService;
 import br.com.unifalmg.hotel.service.EmployeeService;
 //import br.com.unifalmg.hotel.service.ReservationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,7 +45,7 @@ public class HotelController {
 
     @GetMapping("/addGuest")
     public String getAddGuest(){
-        return "adicionar";
+        return "new-guest";
     }
 
     @GetMapping("/employees")
@@ -62,7 +57,7 @@ public class HotelController {
 
     @GetMapping("/addEmployee")
     public String getAddEmployee(){
-        return "novo-funcionario";
+        return "new-employee";
     }
 
 
@@ -84,17 +79,17 @@ public class HotelController {
 //    }
 
     @PostMapping("/addGuest")
-    public String newGuest(@RequestParam String nome,
-                                   @RequestParam String sobrenome,
+    public String newGuest(@RequestParam String name,
+                                   @RequestParam String last_name,
                                    @RequestParam String cpf,
-                                   @RequestParam String telefone,
-                                   @RequestParam String sexo) {
+                                   @RequestParam String cellphone,
+                                   @RequestParam String gender) {
         Guest newGuest = Guest.builder()
-                .name(nome)
-                .last_name(sobrenome)
+                .name(name)
+                .last_name(last_name)
                 .cpf(cpf)
-                .cellphone(telefone)
-                .gender(sexo.charAt(0))
+                .cellphone(cellphone)
+                .gender(gender.charAt(0))
                 .build();
 
         guestService.saveGuest(newGuest);
@@ -137,22 +132,24 @@ public class HotelController {
     }
 
     @PostMapping("/addEmployee")
-    public String newEmployee(@RequestParam String nome,
-                           @RequestParam String sobrenome,
+    public String newEmployee(@RequestParam String name,
+                           @RequestParam String last_name,
                            @RequestParam String cpf,
                            @RequestParam String cnh,
-                           @RequestParam String sexo) {
+                           @RequestParam String gender,
+                              @RequestParam Manager manager) {
         Employee newEmployee = Employee.builder()
-                .name(nome)
-                .last_name(sobrenome)
+                .name(name)
+                .last_name(last_name)
                 .cpf(cpf)
                 .cnh(cnh)
-                .gender(sexo.charAt(0))
+                .gender(gender.charAt(0))
+                .manager_id(manager)
                 .build();
 
         employeeService.saveEmployee(newEmployee);
 
-        return "redirect:/empoyees";
+        return "redirect:/employees";
     }
     @GetMapping("/deleteEmployee/{id}")
     public String deleteEmployee(@PathVariable Integer id) {
@@ -177,7 +174,6 @@ public class HotelController {
     @PostMapping("/saveUpdatedEmployee")
     public String saveUpdatedEmployee(@ModelAttribute Employee updatedEmployee) {
         employeeService.saveEmployee(updatedEmployee);
-
         return "redirect:/employees";
     }
 

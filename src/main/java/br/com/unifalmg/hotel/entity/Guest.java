@@ -16,7 +16,7 @@ public class Guest implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @Column(name = "id_guest")
+    @Column(name = "guest_id")
     private Integer id_guest;
 
     @Column(name = "name")

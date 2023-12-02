@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_employee;
+    private Integer employee_id;
 
     @Column(name = "name")
     private String name;
@@ -28,8 +28,8 @@ public class Employee implements Serializable {
     private String cnh;
 
     @ManyToOne
-    @JoinColumn(name = "id_manager")
-    private Manager id_manager;
+    @JoinColumn(name = "manager_id")
+    private Manager manager_id;
 
     @Column(name = "gender")
     private Character gender;
