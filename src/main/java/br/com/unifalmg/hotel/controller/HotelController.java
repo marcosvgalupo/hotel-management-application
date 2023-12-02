@@ -84,13 +84,13 @@ public class HotelController {
 //    }
 
     @PostMapping("/addGuest")
-    public String cadastrarHospede(@RequestParam String nome,
+    public String newGuest(@RequestParam String nome,
                                    @RequestParam String sobrenome,
                                    @RequestParam String cpf,
                                    @RequestParam String telefone,
                                    @RequestParam String sexo) {
         // Crie um novo Guest com os dados do formulário
-        Guest novoHospede = Guest.builder()
+        Guest newGuest = Guest.builder()
                 .name(nome)
                 .last_name(sobrenome)
                 .cpf(cpf)
@@ -99,16 +99,16 @@ public class HotelController {
                 .build();
 
         // Salve o novo Guest no banco de dados usando o serviço GuestService
-        guestService.salvarHospede(novoHospede);
+        guestService.saveGuest(newGuest);
 
         // Redirecione para a página desejada após o cadastro (por exemplo, a página de listagem de hóspedes)
         return "redirect:/guests";
     }
 
-    @GetMapping("/deletar-hospede/{id}")
-    public String deletarHospede(@PathVariable Integer id) {
+    @GetMapping("/deleteGuest/{id}")
+    public String deleteGuest(@PathVariable Integer id) {
         // Chame o serviço para deletar o Guest pelo ID
-        guestService.deletarHospede(id);
+        guestService.deleteGuest(id);
 
         // Redirecione para a página desejada após a exclusão (por exemplo, a página de listagem de hóspedes)
         return "redirect:/guests";
