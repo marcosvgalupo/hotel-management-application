@@ -1,4 +1,25 @@
+/*
 package br.com.unifalmg.hotel.entity;
 
-public class RoomType extends Room{
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.io.Serializable;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(schema = "railway", name = "room_type")
+public class RoomType extends Room implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer code;
+
+    @Column(name = "description")
+    private String description;
+
 }
+*/

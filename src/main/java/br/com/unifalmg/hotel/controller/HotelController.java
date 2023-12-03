@@ -3,6 +3,7 @@ package br.com.unifalmg.hotel.controller;
 import br.com.unifalmg.hotel.entity.Employee;
 import br.com.unifalmg.hotel.entity.Guest;
 import br.com.unifalmg.hotel.entity.Manager;
+import br.com.unifalmg.hotel.repository.GuestRepository;
 import br.com.unifalmg.hotel.service.GuestService;
 import br.com.unifalmg.hotel.service.ManagerService;
 import br.com.unifalmg.hotel.service.EmployeeService;
@@ -23,7 +24,6 @@ public class HotelController {
     private final GuestService guestService;
     private final ManagerService managerService;
     private final EmployeeService employeeService;
-//    private final ReservationService reservationService;
 
     @GetMapping("/")
     public String getIndex(){
@@ -126,9 +126,9 @@ public class HotelController {
 
     @PostMapping("/guests")
     public String findFilteredGuests(Model model, @ModelAttribute Guest guest){
-        List<Guest> filteredGuests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
+        List<GuestRepository.GuestProjection> filteredGuests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
         model.addAttribute("guests", filteredGuests);
-        return "guests";
+        return "redirect:/guests";
     }
 
     @PostMapping("/addEmployee")

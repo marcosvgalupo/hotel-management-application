@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <title>HOTEL BEIRA-MAR</title>
+</head>
+
+<body>
+<main>
+  <div class="hotel-header">
+    <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
+  </div>
+
+  <a class="back-button" href="/home"><img src="seta-esquerda.png"></a>
+  <div class="content">
+    <div class="choose-field">
+      <div class="search-input">
+
+        <form action="/guests" method="post" >
+          <input class="guests-input" type="text" id="txtBuscaH" placeholder="Nome" name="name"/>
+          <input class="guests-input" type="text" id="txtBuscaH" placeholder="Sobrenome" name="last_name"/>
+          <input class="guests-input" type="text" id="txtBuscaH" placeholder="CPF" name="cpf"/>
+          <select id="gender-input" name="gender" class="input-sexo">
+            <option value="" disabled selected>Sexo</option>
+            <option value="masculino">M</option>
+            <option value="feminino">F</option>
+          </select>
+          <button type="submit" class="search-button"></button>
+        </form>
+
+      </div>
+      <div class="guest-field">
+        <a href="/addGuest">Cadastrar</a>
+      </div>
+
+      <div class="table-div">
+        <table>
+          <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Sexo</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="guest : ${guests}">
+            <td><span th:text="${guest.name}"></span></td>
+            <td><span th:text="${guest.last_name}"></span></td>
+            <td><span th:text="${guest.cpf}"></span></td>
+            <td><span th:text="${guest.cellphone}"></span></td>
+            <td><span th:text="${guest.gender}"></span></td>
+            <td class="delete-link">
+              <a th:href="@{/deleteGuest/{id}(id=${guest.guest_id})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
+              <a th:href="@{/updateGuest/{id}(id=${guest.guest_id})}">^</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+</footer>
+</body>
+</html>
