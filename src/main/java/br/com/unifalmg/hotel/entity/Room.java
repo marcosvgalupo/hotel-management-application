@@ -1,5 +1,3 @@
-/*
-
 package br.com.unifalmg.hotel.entity;
 
 import jakarta.persistence.*;
@@ -14,7 +12,6 @@ import java.io.Serializable;
 @Entity
 @Table(schema = "railway", name = "room")
 public class Room implements Serializable {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +29,6 @@ public class Room implements Serializable {
     @Column(name = "status") // se 1 o quarto está disponível, se 0 está ocupado
     private Integer status;
 
-    // A partir daqui impĺementar a lógica de chave estrangeira para todos os atributos
     @Column(name = "manager_id")
     private Integer manager_id;
 
@@ -43,4 +39,3 @@ public class Room implements Serializable {
     private Integer guest_id;
 
 }
-*/

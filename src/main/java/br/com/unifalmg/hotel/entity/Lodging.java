@@ -1,4 +1,3 @@
-/*
 package br.com.unifalmg.hotel.entity;
 
 
@@ -13,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 @Table(schema = "railway", name = "lodging")
-public class Lodging extends Reservation implements Serializable {
+public class Lodging  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,4 +24,3 @@ public class Lodging extends Reservation implements Serializable {
     @Column(name = "status")
     private Integer status;
 }
-*/

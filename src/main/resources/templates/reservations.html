@@ -22,16 +22,16 @@
   <div class="choose-field" id="reserva-choose-field">
     <div class="barra-pesquisa">
       <div class="reservation-field">
-        <a class="botao-adicionar" href="/reservar">Nova reserva</a>
-        <a class="botao-remover" href="/reservas">Cancelar reserva</a>
+        <a href="/new-reservation">Nova reserva</a>
       </div>
     </div>
+      <div class="table-div">
     <table>
       <thead>
           <tr>
-              <th>ID Funcionário</th>
+              <th>ID Gerente</th>
               <th>ID Hóspede</th>
-              <th>Tipo de Quarto</th>
+              <th>ID Quarto</th>
               <th>ID Hospedagem</th>
               <th>Data de Início da Reserva</th>
               <th>Data de Fim da Reserva</th>
@@ -40,14 +40,21 @@
       </thead>
       <tbody>
       <tr th:each="reservation : ${reservations}">
-          <td><span th:text="${reservation.name}"></span></td>
-          <td><span th:text="${reservation.last_name}"></span></td>
-          <td><span th:text="${reservation.cpf}"></span></td>
-          <td><span th:text="${reservation.cellphone}"></span></td>
-          <td><span th:text="${reservation.gender}"></span></td>
+          <td><span th:text="${reservation.manager_id.manager_id}"></span></td>
+          <td><span th:text="${reservation.guest_id.guest_id}"></span></td>
+          <td><span th:text="${reservation.room_id.room_number}"></span></td>
+          <td><span th:text="${reservation.lodging_id.lodging_id}"></span></td>
+          <td><span th:text="${reservation.checkin_date}"></span></td>
+          <td><span th:text="${reservation.checkout_date}"></span></td>
+          <td><span th:text="${reservation.status}"></span></td>
+          <td class="delete-link" th:if="${reservation.status == 1}">
+              <a th:href="@{/cancelReservation/{id}(id=${reservation.reservation_id})}" onclick="return confirm('Tem certeza que deseja cancelar essa reserva??')">x</a>
+              <a th:href="@{/update-reservation/{id}(id=${reservation.reservation_id})}">^</a>
+          </td>
       </tr>
       </tbody>
   </table>
+          </div>
 </div>
 </div>
 </main>
