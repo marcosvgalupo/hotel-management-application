@@ -1,4 +1,3 @@
-/*
 package br.com.unifalmg.hotel.entity;
 
 import jakarta.persistence.*;
@@ -12,7 +11,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Entity
 @Table(schema = "railway", name = "room_type")
-public class RoomType extends Room implements Serializable {
+public class RoomType implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +21,3 @@ public class RoomType extends Room implements Serializable {
     private String description;
 
 }
-*/

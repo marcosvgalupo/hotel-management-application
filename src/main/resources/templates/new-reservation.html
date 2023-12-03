@@ -20,62 +20,74 @@
 <a class="back-button" href="/home"><img src="seta-esquerda.png"></a>
 <div class="content">
   <div class="new-reservation">
-    <form action="/cadastrar-hospede" method="post" class="reservation-form">
+    <form action="/addReservation" method="post" class="reservation-form">
   
         <div>
-            <!-- <h1>Hóspede</h1> -->
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required placeholder="Nome Hóspede">
-          
-            <label for="cpf">Sobrenome:</label>
-            <input type="text" id="cpf" name="cpf" required placeholder="Sobrenome Hóspede">
-          
-            <label for="telefone">CPF:</label>
-            <input type="text" id="telefone" name="telefone" required placeholder="CPF Hóspede">
-    
-            <label for="telefone">Telefone:</label>
-            <input type="text" id="telefone" name="telefone" required placeholder="Telefone Hóspede">
+<!--            &lt;!&ndash; <h1>Hóspede</h1> &ndash;&gt;-->
+<!--            <label for="name">Nome:</label>-->
+<!--            <input type="text" name="name" required placeholder="Nome Hóspede">-->
+<!--          -->
+<!--            <label for="last_name">Sobrenome:</label>-->
+<!--            <input type="text" name="last_name" required placeholder="Sobrenome Hóspede">-->
+<!--          -->
+<!--            <label for="telefone">CPF:</label>-->
+<!--            <input type="text" id="telefone" name="telefone" required placeholder="CPF Hóspede">-->
+<!--    -->
+<!--            <label for="telefone">Telefone:</label>-->
+<!--            <input type="text" id="telefone" name="telefone" required placeholder="Telefone Hóspede">-->
 
-            <label for="telefone">Sexo:</label>
-            <select id="" name="sexo" class="input-sexo" required>
-              <option value="" disabled selected>Sexo Hóspede</option>
-              <option value="masculino">M</option>
-              <option value="feminino">F</option>
-            </select>
+<!--            <label for="telefone">Sexo:</label>-->
+<!--            <select id="" name="sexo" class="input-sexo" required>-->
+<!--              <option value="" disabled selected>Sexo Hóspede</option>-->
+<!--              <option value="masculino">M</option>-->
+<!--              <option value="feminino">F</option>-->
+<!--            </select>-->
+
+            <label for="guest_id">ID Hóspede</label>
+            <input type="number" name="guest_id" required placeholder="ID Hóspede">
+
+            <label for="manager_id">ID Gerente</label>
+            <input type="text" name="manager_id" required placeholder="ID Gerente">
+
+            <label for="room_id">ID Quarto</label>
+            <input type="text" name="room_id" required placeholder="ID Quarto">
+
         </div>
 
         <div>
-            <label for="nome">Nº Leitos:</label>
-            <input type="number" id="numero" name="numero" min="1" max="4" required placeholder="Leitos Quarto">
-          
-            <label for="cpf">Nº Banheiros:</label>
-            <input type="number" id="numero" name="numero" min="1" max="4" required placeholder="Banheiros Quarto">
-          
-    
-            <label for="telefone">Tipo quarto:</label>
-            <select id="" name="sexo" class="input-sexo" required>
-              <option value="" disabled selected>Tipo</option>
-              <option value="masculino">12313</option>
-              <option value="feminino">13231</option>
-            </select>
+<!--            <label for="nome">Nº Leitos:</label>-->
+<!--            <input type="number" id="numero" name="numero" min="1" max="4" required placeholder="Leitos Quarto">-->
+<!--          -->
+<!--            <label for="cpf">Nº Banheiros:</label>-->
+<!--            <input type="number" id="numero" name="numero" min="1" max="4" required placeholder="Banheiros Quarto">-->
+<!--          -->
+<!--    -->
+<!--            <label for="telefone">Tipo quarto:</label>-->
+<!--            <select id="" name="sexo" class="input-sexo" required>-->
+<!--              <option value="" disabled selected>Tipo</option>-->
+<!--              <option value="masculino">12313</option>-->
+<!--              <option value="feminino">13231</option>-->
+<!--            </select>-->
+            <label for="lodging_id">ID Hospedagem</label>
+            <input type="text" name="lodging_id" required placeholder="ID Hospedagem">
         </div>
 
         <div>
-            <label for="nome">ID Funcionário:</label>
-            <input type="text" id="nome" name="nome" required placeholder="ID Funcionário">
-          
-            <label for="cpf">Início Reserva:</label>
-            <input type="date" id="cpf" name="cpf" required>
-          
-            <label for="cpf">Fim Reserva:</label>
-            <input type="date" id="cpf" name="cpf" required>
-    
-            <label for="telefone">Status Reserva:</label>
-            <select id="" name="sexo" class="input-sexo" required>
-              <option value="" disabled selected>Status</option>
-              <option value="masculino">12313</option>
-              <option value="feminino">13231</option>
-            </select>
+<!--            <label for="nome">ID Funcionário:</label>-->
+<!--            <input type="text" id="nome" name="nome" required placeholder="ID Funcionário">-->
+<!--          -->
+            <label for="checkin_date">Início Reserva:</label>
+            <input type="date" name="checkin_date" required>
+
+            <label for="checkout_date">Fim Reserva:</label>
+            <input type="date" name="checkout_date" required>
+<!--    -->
+<!--            <label for="telefone">Status Reserva:</label>-->
+<!--            <select id="" name="sexo" class="input-sexo" required>-->
+<!--              <option value="" disabled selected>Status</option>-->
+<!--              <option value="masculino">12313</option>-->
+<!--              <option value="feminino">13231</option>-->
+<!--            </select>-->
         </div>
       
         <button type="submit">Adicionar reserva</button>

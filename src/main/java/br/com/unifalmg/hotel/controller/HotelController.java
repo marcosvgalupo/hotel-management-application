@@ -1,19 +1,19 @@
 package br.com.unifalmg.hotel.controller;
 
-import br.com.unifalmg.hotel.entity.Employee;
-import br.com.unifalmg.hotel.entity.Guest;
-import br.com.unifalmg.hotel.entity.Manager;
+import br.com.unifalmg.hotel.entity.*;
 import br.com.unifalmg.hotel.repository.GuestRepository;
+import br.com.unifalmg.hotel.repository.ReservationRepository;
 import br.com.unifalmg.hotel.service.GuestService;
 import br.com.unifalmg.hotel.service.ManagerService;
 import br.com.unifalmg.hotel.service.EmployeeService;
-//import br.com.unifalmg.hotel.service.ReservationService;
+import br.com.unifalmg.hotel.service.ReservationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Log4j2
@@ -24,6 +24,7 @@ public class HotelController {
     private final GuestService guestService;
     private final ManagerService managerService;
     private final EmployeeService employeeService;
+    private final ReservationService reservationService;
 
     @GetMapping("/")
     public String getIndex(){
@@ -40,6 +41,14 @@ public class HotelController {
     public String guest(Model model){
         List<Guest> guests = guestService.getAllGuests();
         model.addAttribute("guests", guests);
+        return "guests";
+    }
+
+    @PostMapping("/guests")
+    public String findFilteredGuests(Model model, @ModelAttribute Guest guest){
+        List<GuestRepository.GuestProjection> guests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
+        model.addAttribute("guests", guests);
+        System.out.println("aaa: " + guests);
         return "guests";
     }
 
@@ -70,13 +79,6 @@ public class HotelController {
             return "/index";
         }
     }
-
-//    @GetMapping("/reservations")
-//    public String reservations(Model model){
-//        List<Reservation> reservations = reservationService.getAllReservations();
-//        model.addAttribute("reservations", reservations);
-//        return "reservations";
-//    }
 
     @PostMapping("/addGuest")
     public String newGuest(@RequestParam String name,
@@ -124,13 +126,6 @@ public class HotelController {
         return "redirect:/guests";
     }
 
-    @PostMapping("/guests")
-    public String findFilteredGuests(Model model, @ModelAttribute Guest guest){
-        List<GuestRepository.GuestProjection> filteredGuests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
-        model.addAttribute("guests", filteredGuests);
-        return "redirect:/guests";
-    }
-
     @PostMapping("/addEmployee")
     public String newEmployee(@RequestParam String name,
                            @RequestParam String last_name,
@@ -175,6 +170,41 @@ public class HotelController {
     public String saveUpdatedEmployee(@ModelAttribute Employee updatedEmployee) {
         employeeService.saveEmployee(updatedEmployee);
         return "redirect:/employees";
+    }
+
+    @GetMapping("/reservation")
+    public String reservations(Model model){
+        List<Reservation> reservations = reservationService.getAllReservations();
+        model.addAttribute("reservations", reservations);
+        return "reservations";
+    }
+
+    @GetMapping("/new-reservation")
+    public String newReservation(){
+        return "new-reservation";
+    }
+
+    @PostMapping("/addReservation")
+    public String addReservation(@RequestParam Guest guest_id,
+                           @RequestParam Manager manager_id,
+                           @RequestParam Room room_id,
+                           @RequestParam Lodging lodging_id,
+                           @RequestParam Date checkin_date,
+                                 @RequestParam Date checkout_date
+                                 ) {
+        Reservation newReservation = Reservation.builder()
+                .manager_id(manager_id)
+                .guest_id(guest_id)
+                .status(1)
+                .room_id(room_id)
+                .lodging_id(lodging_id)
+                .checkin_date((java.sql.Date) checkin_date)
+                .checkout_date((java.sql.Date) checkout_date)
+                .build();
+
+        reservationService.saveReservation(newReservation);
+
+        return "redirect:/reservation";
     }
 
 }
