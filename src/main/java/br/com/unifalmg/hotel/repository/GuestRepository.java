@@ -13,10 +13,18 @@ public interface GuestRepository extends JpaRepository<Guest,Integer>{
     @Query(
             nativeQuery = true,
             value = "SELECT * FROM employee WHERE " +
-                    "(UPPER(:name) is null) or (name = UPPER(:name)) AND " +
-                    "(UPPER(:last_name) is null) or (last_name = UPPER(:last_name)) AND" +
-                    "(UPPER(:) is null) or (cpf = UPPER(:cpf)) AND " +
-                    "(UPPER(:gender) is null) or (gender= UPPER(:gender))"
+                    "(:name is null or UPPER(name) = UPPER(:name)) AND " +
+                    "(:last_name is null or UPPER(last_name) = UPPER(:last_name)) AND " +
+                    "(:cpf is null or cpf = :cpf) AND " +
+                    "(:gender is null or UPPER(gender) = UPPER(:gender))"
     )
-    List<Guest> findByFilter(String name, String last_name, String cpf, Character gender);
+    List<GuestProjection> findByFilter(String name, String last_name, String cpf, Character gender);
+
+    interface GuestProjection {
+        String getName();
+        String getLastName();
+        String getCpf();
+        String getCellphone();
+        Character getGender();
+    }
 }

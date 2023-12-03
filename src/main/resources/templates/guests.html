@@ -23,10 +23,10 @@
             <div class="search-input">
 
                 <form action="/guests" method="post" >
-                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="Nome"/>
-                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="Sobrenome"/>
-                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="CPF"/>
-                    <select id="gender-input" name="sexo" class="input-sexo">
+                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="Nome" name="name"/>
+                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="Sobrenome" name="last_name"/>
+                    <input class="guests-input" type="text" id="txtBuscaH" placeholder="CPF" name="cpf"/>
+                    <select id="gender-input" name="gender" class="input-sexo">
                         <option value="" disabled selected>Sexo</option>
                         <option value="masculino">M</option>
                         <option value="feminino">F</option>
@@ -51,15 +51,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="guest : ${guests}">
+                    <tr id="guestTable" th:each="guest : ${guests}">
                         <td><span th:text="${guest.name}"></span></td>
                         <td><span th:text="${guest.last_name}"></span></td>
                         <td><span th:text="${guest.cpf}"></span></td>
                         <td><span th:text="${guest.cellphone}"></span></td>
                         <td><span th:text="${guest.gender}"></span></td>
                         <td class="delete-link">
-                            <a th:href="@{/deleteGuest/{id}(id=${guest.id_guest})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
-                            <a th:href="@{/updateGuest/{id}(id=${guest.id_guest})}">^</a>
+                            <a th:href="@{/deleteGuest/{id}(id=${guest.guest_id})}" onclick="return confirm('Tem certeza que deseja deletar este hóspede?')">x</a>
+                            <a th:href="@{/updateGuest/{id}(id=${guest.guest_id})}">^</a>
                         </td>
                     </tr>
                     </tbody>

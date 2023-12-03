@@ -11,7 +11,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
 @Table(schema = "railway", name = "employee")
 public class Employee implements Serializable {
     @Id

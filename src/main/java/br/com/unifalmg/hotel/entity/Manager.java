@@ -17,13 +17,18 @@ public class Manager implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer manager_id;
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "last_name")
     private String last_name;
 
+    @Column(name = "username")
     private String username;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "gender")
     private Character gender;
 }
