@@ -41,12 +41,12 @@ public class Room implements Serializable {
     private Integer lodging_id;
 
     @ManyToOne
-    @JoinColumn(name = "guest_id", referencedColumnName = "guest_id")
-    @OnDelete(action = OnDeleteAction.SET_NULL)
+    @JoinColumn(name = "guest_id")
     private Guest guest_id;
 
-    @JoinColumn(name = "reservation_id", referencedColumnName = "reservation_id")
-    private Integer reservation_id;
+    @ManyToOne
+    @JoinColumn(name = "reservation_id")
+    private Reservation reservation_id;
 
 
 }

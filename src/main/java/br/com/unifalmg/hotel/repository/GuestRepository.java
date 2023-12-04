@@ -31,10 +31,18 @@ public interface GuestRepository extends JpaRepository<Guest,Integer>{
     List<Object[]> selectGuestAndYoursReservationsByGuestId(Integer guest_id);
 
 
-    @Query(
-            ""
-    )
-    void deleteGuest(Integer id);
+//    @Query(
+//            ""
+//    )
+//    void deleteGuest(Integer id);
 
+    @Query("DELETE FROM Guest g WHERE g.guest_id = :id")
+    void deleteByGuestId(Integer id);
+
+    @Query("DELETE FROM Reservation r WHERE r.guest_id.guest_id = :id")
+    void deleteReservationByGuestId(Integer id);
+
+    @Query("DELETE FROM Room r WHERE r.guest_id.guest_id = :id")
+    void deleteRoomByGuestId(Integer id);
 
 }

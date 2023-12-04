@@ -34,7 +34,9 @@ public class GuestService {
 
     public void deleteGuest(Integer id) {
         if (repository.existsById(id)) {
-            repository.deleteById(id);
+            repository.deleteRoomByGuestId(id);
+            repository.deleteReservationByGuestId(id);
+            repository.deleteByGuestId(id);
         }
         throw new GuestNotFoundException(String.format("User with id[%d] not found!!", id));
     }
