@@ -36,7 +36,7 @@ public interface GuestRepository extends JpaRepository<Guest,Integer>{
 //    )
 //    void deleteGuest(Integer id);
 
-    @Query("DELETE FROM Guest g WHERE g.guest_id = :id")
+    @Query("DELETE FROM Guest WHERE guest_id = :id")
     void deleteByGuestId(Integer id);
 
     @Query("DELETE FROM Reservation r WHERE r.guest_id.guest_id = :id")
