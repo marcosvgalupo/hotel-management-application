@@ -6,6 +6,7 @@ import br.com.unifalmg.hotel.exception.ReservationNotFoundException;
 import br.com.unifalmg.hotel.repository.ReservationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.sql.Date;
 
 import java.util.List;
 import java.util.Objects;
@@ -44,5 +45,8 @@ public class ReservationService {
     }
 
 
+    public void saveUpdateReservation(Integer id, Date checkin_date, Date checkout_date){
+        repository.saveUpdateReservation(id, checkin_date, checkout_date);
+    }
 
 }

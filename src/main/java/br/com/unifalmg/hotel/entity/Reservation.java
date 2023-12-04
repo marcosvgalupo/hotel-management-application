@@ -3,6 +3,7 @@ package br.com.unifalmg.hotel.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
+import java.time.LocalDate;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -16,20 +17,23 @@ import java.sql.Date;
 @Table(schema = "railway", name = "reservation")
 public class Reservation implements Serializable {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer reservation_id;
 
-    @Column(name = "status")  // se 1, a reserva está em andamento (sendo utilizada agora). se 0, é uma reserva futura
+    @Column(name = "status")
     private Integer status;
 
     @Column(name = "checkin_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date checkin_date;
+    @Temporal(TemporalType.DATE)
+    private java.sql.Date checkin_date;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "checkout_date")
-    private Date checkout_date;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private java.sql.Date checkout_date;
 
     @ManyToOne
     @JoinColumn(name = "manager_id")

@@ -1,7 +1,9 @@
 package br.com.unifalmg.hotel.repository;
 
 import br.com.unifalmg.hotel.entity.Guest;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -36,13 +38,27 @@ public interface GuestRepository extends JpaRepository<Guest,Integer>{
 //    )
 //    void deleteGuest(Integer id);
 
-    @Query("DELETE FROM Guest WHERE guest_id = :id")
-    void deleteByGuestId(Integer id);
+//    @Transactional
+//    @Modifying
+//    @Query("DELETE FROM Guest WHERE guest_id = :guest_id")
+//    void deleteByGuestId(@Param("guest_id") Integer guest_id);
+//
+//    @Modifying
+//    @Query("DELETE FROM Reservation r WHERE r.guest_id = :guest_id")
+//    void deleteReservationByGuestId(Integer guest_id);
 
-    @Query("DELETE FROM Reservation r WHERE r.guest_id.guest_id = :id")
-    void deleteReservationByGuestId(Integer id);
+//    @Modifying
+//    @Query("DELETE FROM Room r WHERE r.guest_id = :guest_id")
+//    void deleteRoomByGuestId(Integer guest_id);
 
-    @Query("DELETE FROM Room r WHERE r.guest_id.guest_id = :id")
-    void deleteRoomByGuestId(Integer id);
+//    @Modifying
+//    @Query("DELETE FROM Lodging l WHERE l.lodging_id IN (SELECT r.lodging_id FROM Reservation r WHERE r.guest_id = :guest_id)")
+//    void deleteLodgingByGuestId(Integer guest_id);
+//
+//    @Modifying
+//    @Query("UPDATE Room r SET r.guest_id = NULL, r.manager_id = NULL, r.lodging_id = NULL, r.reservation_id = NULL WHERE r.guest_id = :guest_id")
+//    void updateRoomByGuestId(Integer guest_id);
+
+
 
 }
