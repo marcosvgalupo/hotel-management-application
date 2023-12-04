@@ -20,7 +20,7 @@
 <a class="back-button" href="/home"><img src="seta-esquerda.png"></a>
 <div class="content">
   <div class="choose-field" id="reserva-choose-field">
-    <div class="barra-pesquisa">
+    <div class="report-field">
       <div class="reservation-field">
         <a href="/new-reservation">Nova reserva</a>
       </div>
@@ -47,9 +47,9 @@
           <td><span th:text="${reservation.checkin_date}"></span></td>
           <td><span th:text="${reservation.checkout_date}"></span></td>
           <td><span th:text="${reservation.status}"></span></td>
-          <td class="delete-link" th:if="${reservation.status == 1}">
+          <td class="delete-link">
               <a th:href="@{/cancelReservation/{id}(id=${reservation.reservation_id})}" onclick="return confirm('Tem certeza que deseja cancelar essa reserva??')">x</a>
-              <a th:href="@{/update-reservation/{id}(id=${reservation.reservation_id})}">^</a>
+              <a th:href="@{/updateReservation/{id}(id=${reservation.reservation_id})}">^</a>
           </td>
       </tr>
       </tbody>

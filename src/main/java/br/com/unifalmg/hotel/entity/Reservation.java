@@ -39,7 +39,7 @@ public class Reservation implements Serializable {
     @JoinColumn(name = "lodging_id")
     private Lodging lodging_id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "guest_id")
     private Guest guest_id;
 

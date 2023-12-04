@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <title>HOTEL BEIRA-MAR</title>
+</head>
+
+<body>
+<main>
+    <div class="hotel-header">
+        <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
+    </div>
+
+    <a class="back-button" href="/report"><img src="seta-esquerda.png"></a>
+    <div class="content">
+        <div class="choose-field">
+            <div class="table-div">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>ID Gerente</th>
+                        <th>Reservas Registradas</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="reservation, rowStat : ${reservations}">
+                        <td th:text="${rowStat.index + 1}"></td>
+                        <td th:text="${reservation[1]}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+    </div>
+</main>
+<footer>
+</footer>
+</body>
+</html>

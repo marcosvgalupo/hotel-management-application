@@ -42,6 +42,7 @@
                 <table>
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Sobrenome</th>
                         <th>CNH</th>
@@ -51,6 +52,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="employee : ${employees}">
+                        <td><span th:text="${employee.employee_id}"></span></td>
                         <td><span th:text="${employee.name}"></span></td>
                         <td><span th:text="${employee.last_name}"></span></td>
                         <td><span th:text="${employee.cnh}"></span></td>

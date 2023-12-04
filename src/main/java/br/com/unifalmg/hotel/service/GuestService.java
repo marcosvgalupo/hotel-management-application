@@ -42,4 +42,15 @@ public class GuestService {
         return repository.findByFilter(name, last_name, cpf, gender);
     }
 
+    public List<Guest> orderGuestsAtoZ() {
+        return repository.orderGuestsAtoZ();
+    }
+
+    public List<Guest> orderGuestsZtoA() {
+        return repository.orderGuestsZtoA();
+    }
+
+    public List<Object[]> guestAndReservation(Integer id){
+        return repository.selectGuestAndYoursReservationsByGuestId(id);
+    }
 }

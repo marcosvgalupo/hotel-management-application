@@ -141,18 +141,19 @@ footer h1:hover {
     justify-content: center;
 }
 
-.choose-field a {
+.report-a {
     background-color: #990100;
     text-decoration: none;
-    margin: auto 30px;
+    /*margin: auto 30px;*/
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2em;
+    font-size: 1.5em;
     text-transform: uppercase;
     text-align: center;
-    width: 300px;
-    height: 100px;
+    width: 70%;
+    /*height: 100px;*/
+    margin-bottom: 1em;
     color: white;
     border-radius: 1.5em;
 }
@@ -211,25 +212,25 @@ input {
     outline: none;
     border-radius: 1em;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 2em;
 }
 
 .guests-input::placeholder {
   font-size: 0.7em;
-  margin-left: 1em;
+  margin-left: 0.1em;
 }
 
 .guests-input {
     padding-left: 1em;
-    margin-left: 1em;
+    margin-left: 0.1em;
     width: 13%;
     height: 1.3em;
     border: 0;
     outline: none;
     border-radius: 1em;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 2em;
 }
 
@@ -241,7 +242,7 @@ input {
     outline: none;
     border-radius: 1em;
     position: relative;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra leve */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button{
@@ -444,3 +445,44 @@ th {
     display: flex;
 }
 
+.report-button {
+    width: 100em;
+    height: 90vh;
+    background-color: black;
+    text-decoration: none;
+    color: white;
+    border-radius: 1.5em;
+    text-align: center;
+    font-size: 1.5em;
+    text-transform: uppercase;
+}
+
+.report-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.report-field form button {
+    background-color: #990100;
+    text-align: center;
+    margin: auto;
+}
+
+.home-a {
+    background-color: #990100;
+    text-decoration: none;
+    margin: auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    text-transform: uppercase;
+    text-align: center;
+    width: 300px;
+    height: 100px;
+    color: white;
+    border-radius: 1.5em;
+}
