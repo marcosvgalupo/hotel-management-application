@@ -36,6 +36,7 @@ public class GuestService {
         if (repository.existsById(id)) {
             repository.deleteById(id);
         }
+        throw new GuestNotFoundException(String.format("User with id[%d] not found!!", id));
     }
 
     public List<Guest> findByFilter(String name, String last_name, String cpf, Character gender){

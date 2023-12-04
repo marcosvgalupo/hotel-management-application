@@ -119,7 +119,7 @@ public class HotelController {
         return "redirect:/guests";
     }
 
-    @GetMapping("/deleteGuest/{id}")
+    @DeleteMapping("/deleteGuest/{id}")
     public String deleteGuest(@PathVariable Integer id) {
         guestService.deleteGuest(id);
 

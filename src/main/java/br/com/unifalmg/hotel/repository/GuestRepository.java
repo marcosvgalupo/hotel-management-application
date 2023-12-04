@@ -30,4 +30,11 @@ public interface GuestRepository extends JpaRepository<Guest,Integer>{
     @Query("SELECT g.name, g.last_name, r.reservation_id, r.status FROM Guest g JOIN Reservation r ON g.guest_id = r.guest_id.guest_id WHERE g.guest_id = :guest_id")
     List<Object[]> selectGuestAndYoursReservationsByGuestId(Integer guest_id);
 
+
+    @Query(
+            ""
+    )
+    void deleteGuest(Integer id);
+
+
 }
