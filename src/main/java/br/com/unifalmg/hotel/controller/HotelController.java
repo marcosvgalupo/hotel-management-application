@@ -119,7 +119,7 @@ public class HotelController {
         return "redirect:/guests";
     }
 
-    @DeleteMapping("/deleteGuest/{id}")
+    @GetMapping("/deleteGuest/{id}")
     public String deleteGuest(@PathVariable Integer id) {
         guestService.deleteGuest(id);
 
@@ -205,7 +205,6 @@ public class HotelController {
         model.addAttribute("employees", employees);
         return "ordered-employees";
     }
-
 
     @GetMapping("/reservation")
     public String reservations(Model model){
