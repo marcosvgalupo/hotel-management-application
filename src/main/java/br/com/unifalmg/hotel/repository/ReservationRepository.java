@@ -12,4 +12,9 @@ public interface ReservationRepository extends JpaRepository<Reservation,Integer
 
     @Query("SELECT r.manager_id, COUNT(*) as reservationCount FROM Reservation r GROUP BY r.manager_id")
     List<Object[]> countReservationsByManager();
+
+    @Query(
+            ""
+    )
+    void deleteReservation(Integer id);
 }

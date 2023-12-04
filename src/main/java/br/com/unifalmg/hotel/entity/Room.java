@@ -32,9 +32,11 @@ public class Room implements Serializable {
     @Column(name = "status") // se 1 o quarto está disponível, se 0 está ocupado
     private Integer status;
 
+
     @Column(name = "manager_id")
     private Integer manager_id;
 
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     @Column(name = "lodging_id")
     private Integer lodging_id;
 
@@ -42,6 +44,9 @@ public class Room implements Serializable {
     @JoinColumn(name = "guest_id", referencedColumnName = "guest_id")
     @OnDelete(action = OnDeleteAction.SET_NULL)
     private Guest guest_id;
+
+    @JoinColumn(name = "reservation_id", referencedColumnName = "reservation_id")
+    private Integer reservation_id;
 
 
 }
