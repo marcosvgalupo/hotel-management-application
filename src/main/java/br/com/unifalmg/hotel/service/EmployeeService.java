@@ -47,4 +47,7 @@ public class EmployeeService {
         return repository.orderEmployeesZtoA();
     }
 
+    public List<Employee> filteredEmployees(String name, String last_name, String cnh, Character gender){
+        return repository.filteredEmployees(name, last_name, cnh, gender);
+    }
 }

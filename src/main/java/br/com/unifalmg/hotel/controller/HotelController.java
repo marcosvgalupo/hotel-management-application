@@ -69,7 +69,6 @@ public class HotelController {
     public String findFilteredGuests(Model model, @ModelAttribute Guest guest){
         List<Guest> guests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
         model.addAttribute("guests", guests);
-        System.out.println("aaa: " + guests);
         return "guests";
     }
 
@@ -287,5 +286,13 @@ public class HotelController {
         model.addAttribute("guests", guests);
         return "guests-reservations";
     }
+
+    @PostMapping("/employees")
+    public String filteredEmployees(Model model, @ModelAttribute Employee employee){
+        List<Employee> employees = employeeService.filteredEmployees(employee.getName(), employee.getLast_name(), employee.getCnh(), employee.getGender());
+        model.addAttribute("employees", employees);
+        return "/employees";
+    }
+
 
 }
