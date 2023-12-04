@@ -13,22 +13,13 @@ import java.util.Objects;
 public interface GuestRepository extends JpaRepository<Guest,Integer>{
 
     @Query(
-            nativeQuery = true,
-            value = "SELECT name, last_name, cpf, gender FROM guest WHERE " +
-                    "(:name is null or UPPER(name) = UPPER(:name)) AND " +
-                    "(:last_name is null or UPPER(last_name) = UPPER(:last_name)) AND " +
-                    "(:cpf is null or cpf = :cpf) AND " +
-                    "(:gender is null or UPPER(gender) = UPPER(:gender))"
+            "SELECT g FROM Guest g WHERE " +
+            "(:name is null OR UPPER(g.name) LIKE UPPER(concat('%', :name, '%'))) AND " +
+            "(:last_name is null OR UPPER(g.last_name) LIKE UPPER(concat('%', :last_name, '%'))) AND " +
+            "(:cpf is null OR g.cpf LIKE concat('%', :cpf, '%')) AND " +
+            "(:gender is null OR UPPER(g.gender) LIKE UPPER(concat('%', :gender, '%')))"
     )
-    List<GuestProjection> findByFilter(String name, String last_name, String cpf, Character gender);
-
-    interface GuestProjection {
-        String getName();
-        String getLastName();
-        String getCpf();
-        String getCellphone();
-        Character getGender();
-    }
+    List<Guest> findByFilter(String name, String last_name, String cpf, Character gender);
 
     @Query("SELECT g FROM Guest g ORDER BY g.name ASC")
     List<Guest> orderGuestsAtoZ();

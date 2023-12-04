@@ -67,7 +67,7 @@ public class HotelController {
 
     @PostMapping("/guests")
     public String findFilteredGuests(Model model, @ModelAttribute Guest guest){
-        List<GuestRepository.GuestProjection> guests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
+        List<Guest> guests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
         model.addAttribute("guests", guests);
         System.out.println("aaa: " + guests);
         return "guests";
