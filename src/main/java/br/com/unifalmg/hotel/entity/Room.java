@@ -2,6 +2,9 @@ package br.com.unifalmg.hotel.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 
 @Setter
@@ -35,7 +38,10 @@ public class Room implements Serializable {
     @Column(name = "lodging_id")
     private Integer lodging_id;
 
-    @Column(name = "guest_id")
-    private Integer guest_id;
+    @ManyToOne
+    @JoinColumn(name = "guest_id", referencedColumnName = "guest_id")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
+    private Guest guest_id;
+
 
 }

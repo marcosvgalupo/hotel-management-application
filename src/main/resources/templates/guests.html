@@ -43,6 +43,7 @@
                 <table>
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Sobrenome</th>
                         <th>CPF</th>
@@ -52,6 +53,7 @@
                     </thead>
                     <tbody>
                     <tr id="guestTable" th:each="guest : ${guests}">
+                        <td><span th:text="${guest.guest_id}"></span></td>
                         <td><span th:text="${guest.name}"></span></td>
                         <td><span th:text="${guest.last_name}"></span></td>
                         <td><span th:text="${guest.cpf}"></span></td>

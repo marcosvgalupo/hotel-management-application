@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <title>HOTEL BEIRA-MAR</title>
+
+    <script>
+        function updateURL() {
+            var guestId = document.getElementById("guestId").value;
+            document.getElementById("guestForm").action = "/guestAndReservation/" + (guestId ? guestId : 'null');
+        }
+    </script>
+</head>
+<body>
+  <main>
+    <div class="hotel-header">
+        <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
+    </div>
+<a class="back-button" href="/home"><img src="seta-esquerda.png"></a>
+<div class="content">
+  <div class="choose-field" id="reserva-choose-field">
+    <div class="report-field">
+          <div>
+              <a class="report-a" href="/orderedGuestsAtoZ">Ordenar Funcionários (crescente)</a>
+              <a class="report-a" href="/orderedGuestsZtoA">Ordenar Funcionários (decrescente)</a>
+              <a class="report-a" href="/orderedEmployeesAtoZ">Ordenar Empregados (crescente)</a>
+              <a class="report-a" href="/orderedEmployeesAtoZ">Ordenar Empregados (decrescente)</a>
+          </div>
+
+          <div>
+              <a class="report-a" href="/statusRoom/0">Quartos Disponíveis</a>
+              <a class="report-a" href="/statusRoom/1">Quartos Ocupados</a>
+              <a class="report-a" href="/countReservation">Reservas por gerentes</a>
+          </div>
+
+        <form id="guestForm" onsubmit="updateURL()" method="get">
+            <label for="guestId">ID do Hóspede:</label>
+            <input type="number" id="guestId" name="id" required>
+            <button type="submit">Reservas</button>
+        </form>
+    </div>
+</div>
+</div>
+</main>
+<footer>
+</footer>
+</body>
+</html>

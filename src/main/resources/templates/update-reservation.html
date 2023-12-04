@@ -21,20 +21,11 @@
     <div class="content">
         <div class="login-field">
         <h2>Atualizar Hóspede</h2>
-        <form action="/saveUpdatedEmployee" method="post">
-            <input type="hidden" th:field="${employee.employee_id}" name="employee_id" />
-            <label for="nome">Nome:</label>
-            <input type="text" th:field="${employee.name}" name="name" required />
-            <label for="sobrenome">Sobrenome:</label>
-            <input type="text" th:field="${employee.last_name}" name="last_name" required />
-            <label for="cpf">CPF:</label>
-            <input type="text" th:field="${employee.cpf}" name="cpf" required />
-            <label for="cnh">Cnh:</label>
-            <input type="text" th:field="${employee.cnh}" name="cellphone" required />
-            <label for="sexo">Sexo:</label>
-            <input type="text" th:field="${employee.gender}" name="gender" required />
-            <label for="manager_id">ID gerente:</label>
-            <input type="text" th:field="${employee.manager_id}" name="gender" required />
+        <form action="/saveUpdatedReservation" method="post">
+            <label for="checkin_date">Sexo:</label>
+            <input type="date" th:field="${reservation.checkin_date}" name="checkin_date" required />
+            <label for="checkout_date">ID gerente:</label>
+            <input type="date" th:field="${reservation.checkout_date}" name="checkout_date" required />
 
             <button type="submit">Salvar Atualizações</button>
         </form>

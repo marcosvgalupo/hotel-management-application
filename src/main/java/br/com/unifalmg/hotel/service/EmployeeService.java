@@ -39,4 +39,12 @@ public class EmployeeService {
         }
     }
 
+    public List<Employee> orderEmployeesAtoZ() {
+        return repository.orderEmployeesAtoZ();
+    }
+
+    public List<Employee> orderEmployeesZtoA() {
+        return repository.orderEmployeesZtoA();
+    }
+
 }

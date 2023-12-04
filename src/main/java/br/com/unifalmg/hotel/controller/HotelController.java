@@ -4,6 +4,7 @@ import br.com.unifalmg.hotel.entity.*;
 import br.com.unifalmg.hotel.repository.GuestRepository;
 import br.com.unifalmg.hotel.repository.ReservationRepository;
 import br.com.unifalmg.hotel.service.GuestService;
+import br.com.unifalmg.hotel.service.RoomService;
 import br.com.unifalmg.hotel.service.ManagerService;
 import br.com.unifalmg.hotel.service.EmployeeService;
 import br.com.unifalmg.hotel.service.ReservationService;
@@ -25,10 +26,16 @@ public class HotelController {
     private final ManagerService managerService;
     private final EmployeeService employeeService;
     private final ReservationService reservationService;
+    private final RoomService roomService;
 
     @GetMapping("/")
     public String getIndex(){
         return "index";
+    }
+
+    @GetMapping("/report")
+    public String getReport(){
+        return "report";
     }
 
     @GetMapping("/home")
@@ -42,6 +49,20 @@ public class HotelController {
         List<Guest> guests = guestService.getAllGuests();
         model.addAttribute("guests", guests);
         return "guests";
+    }
+
+    @GetMapping("/orderedGuestsAtoZ")
+    public String orderedGuestsAtoZ(Model model){
+        List<Guest> guests = guestService.orderGuestsAtoZ();
+        model.addAttribute("guests", guests);
+        return "ordered-guests";
+    }
+
+    @GetMapping("/orderedGuestsZtoA")
+    public String orderedGuestsZtoA(Model model){
+        List<Guest> guests = guestService.orderGuestsZtoA();
+        model.addAttribute("guests", guests);
+        return "ordered-guests";
     }
 
     @PostMapping("/guests")
@@ -161,7 +182,7 @@ public class HotelController {
 
         model.addAttribute("employee", existingEmployee);
 
-        return "update-employee";
+        return "updateEmployee";
     }
 
 
@@ -171,6 +192,21 @@ public class HotelController {
         employeeService.saveEmployee(updatedEmployee);
         return "redirect:/employees";
     }
+
+    @GetMapping("/orderedEmployeesAtoZ")
+    public String orderedEmployeesAtoZ(Model model){
+        List<Employee> employees = employeeService.orderEmployeesAtoZ();
+        model.addAttribute("employees", employees);
+        return "ordered-employees";
+    }
+
+    @GetMapping("/orderedEmployeesZtoA")
+    public String orderedEmployeesZtoA(Model model){
+        List<Employee> employees = employeeService.orderEmployeesZtoA();
+        model.addAttribute("employees", employees);
+        return "ordered-employees";
+    }
+
 
     @GetMapping("/reservation")
     public String reservations(Model model){
@@ -205,6 +241,51 @@ public class HotelController {
         reservationService.saveReservation(newReservation);
 
         return "redirect:/reservation";
+    }
+
+    @GetMapping("/cancelReservation/{id}")
+    public String cancelReservation(@PathVariable Integer id) {
+        reservationService.cancelReservation(id);
+        return "redirect:/reservation";
+    }
+
+    @GetMapping("/updateReservation/{id}")
+    public String updateReservation(@PathVariable Integer id, Model model) {
+        Reservation existingReservation = reservationService.findById(id);
+
+        model.addAttribute("reservation", existingReservation);
+
+        return "update-reservation";
+    }
+
+
+
+    @PostMapping("/saveUpdatedReservation")
+    public String saveUpdatedReservation(@ModelAttribute Reservation updatedReservation) {
+        reservationService.saveReservation(updatedReservation);
+        return "redirect:/reservations";
+    }
+
+    @GetMapping("/statusRoom/{status}")
+    public String statusRoom(Model model, @PathVariable Integer status){
+        List<Room> rooms = roomService.statusRoom(status);
+        model.addAttribute("rooms", rooms);
+        return "status-rooms";
+    }
+
+
+    @GetMapping("/countReservation")
+    public String countReservation(Model model){
+        List<Object[]> reservations = reservationService.countReservationsByManager();
+        model.addAttribute("reservations", reservations);
+        return "count-reservations";
+    }
+
+    @GetMapping("/guestAndReservation/{id}")
+    public String guestAndReservation(Model model, @PathVariable Integer id){
+        List<Object[]> guests = guestService.guestAndReservation(id);
+        model.addAttribute("guests", guests);
+        return "guests-reservations";
     }
 
 }
