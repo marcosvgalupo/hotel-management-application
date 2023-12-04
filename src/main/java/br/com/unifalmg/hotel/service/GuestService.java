@@ -38,7 +38,7 @@ public class GuestService {
         }
     }
 
-    public List<GuestRepository.GuestProjection> findByFilter(String name, String last_name, String cpf, Character gender){
+    public List<Guest> findByFilter(String name, String last_name, String cpf, Character gender){
         return repository.findByFilter(name, last_name, cpf, gender);
     }
 
