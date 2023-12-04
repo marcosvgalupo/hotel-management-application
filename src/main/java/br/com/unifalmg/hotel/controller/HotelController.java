@@ -10,9 +10,14 @@ import br.com.unifalmg.hotel.service.EmployeeService;
 import br.com.unifalmg.hotel.service.ReservationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -119,20 +124,23 @@ public class HotelController {
         return "redirect:/guests";
     }
 
-    @GetMapping("/deleteGuest/{id}")
-    public String deleteGuest(@PathVariable Integer id) {
-        guestService.deleteGuest(id);
+//    @DeleteMapping("/deleteGuest/{guest_id}")
+//    public void deleteGuest(@PathVariable Integer guest_id) {
+//        guestService.deleteGuest(guest_id);
+//    }
 
-        return "redirect:/guests";
+    @GetMapping("/deleteGuest/{guest_id}")
+    public String getGuest(@PathVariable Integer guest_id, Model model) {
+        List<Guest> guests = guestService.getAllGuests();
+        model.addAttribute("guests", guests);
+        return "guests";
     }
-
-
 
     @GetMapping("/updateGuest/{id}")
     public String updateGuest(@PathVariable Integer id, Model model) {
         Guest existingGuest = guestService.findById(id);
 
-        model.addAttribute("guest", existingGuest);
+        model.addAttribute("guests", existingGuest);
 
         return "update-guest";
     }
@@ -247,7 +255,7 @@ public class HotelController {
         return "redirect:/reservation";
     }
 
-    @GetMapping("/updateReservation/{id}")
+    @GetMapping("/update-reservation/{id}")
     public String updateReservation(@PathVariable Integer id, Model model) {
         Reservation existingReservation = reservationService.findById(id);
 
@@ -259,9 +267,32 @@ public class HotelController {
 
 
     @PostMapping("/saveUpdatedReservation")
-    public String saveUpdatedReservation(@ModelAttribute Reservation updatedReservation) {
-        reservationService.saveReservation(updatedReservation);
-        return "redirect:/reservations";
+    public String saveUpdatedReservation(
+            @RequestParam("checkin_date") String checkin_date,
+            @RequestParam("checkout_date") String checkout_date,
+            @RequestParam("id") String id) {
+
+
+        Date checkinDateSql = null;
+        Date checkoutDateSql = null;
+
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date utilCheckinDate = sdf.parse(checkin_date);
+            java.util.Date utilCheckoutDate = sdf.parse(checkout_date);
+
+            checkinDateSql = new Date(utilCheckinDate.getTime());
+            checkoutDateSql = new Date(utilCheckoutDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        reservationService.saveUpdateReservation(
+                Integer.parseInt(id),
+                (java.sql.Date) checkinDateSql,
+                (java.sql.Date) checkoutDateSql
+        );
+        return "redirect:/reservation";
     }
 
     @GetMapping("/statusRoom/{status}")

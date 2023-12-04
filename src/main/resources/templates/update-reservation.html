@@ -21,12 +21,12 @@
     <div class="content">
         <div class="login-field">
         <h2>Atualizar Hóspede</h2>
-        <form action="/saveUpdatedReservation" method="post">
-            <label for="checkin_date">Sexo:</label>
-            <input type="date" th:field="${reservation.checkin_date}" name="checkin_date" required />
-            <label for="checkout_date">ID gerente:</label>
-            <input type="date" th:field="${reservation.checkout_date}" name="checkout_date" required />
-
+            <form id="form-res" onsubmit="updateURL()"  method="post">
+                <label id="checkin_input" for="checkin_date" name = "checkin_date">Data Entrada</label>
+                <input type="date" th:field="${reservation.checkin_date}" name="checkin_date" required />
+                <label for="checkout_date" name = "checkout_date">Data Saída</label>
+                <input id="checkout_input" type="date" th:field="${reservation.checkout_date}" name="checkout_date" required />
+                <input type="hidden" id="id" name="id" value="${id}" />
             <button type="submit">Salvar Atualizações</button>
         </form>
         </div>
@@ -34,6 +34,56 @@
 </main>
 <footer>
 </footer>
+<script>
+    function converterDatas() {
+        // Obtenha os valores dos campos de data
+        let checkinDate = new Date(document.getElementById('checkin_date_input').value);
+        let checkoutDate = new Date(document.getElementById('checkout_date_input').value);
+
+        // Obtenha o valor do parâmetro 'id' da URL atual
+        let idParam = obterValorDoParametro('id');
+
+        // Formate as datas no formato "YYYY-MM-DD"
+        let checkinDateString = formatDate(checkinDate);
+        let checkoutDateString = formatDate(checkoutDate);
+
+        // Adicione 'id' como parâmetro na URL
+        let url = "/saveUpdatedReservation?checkin_date=" + checkinDateString + "&checkout_date=" + checkoutDateString + "&id=" + idParam;
+
+        // Redirecione para a URL com os parâmetros
+        window.location.href = url;
+    }
+
+    function formatDate(date) {
+        let year = date.getFullYear();
+        let month = ('0' + (date.getMonth() + 1)).slice(-2);
+        let day = ('0' + date.getDate()).slice(-2);
+        return year + '-' + month + '-' + day;
+    }
+
+    function obterValorDoParametro(nomeParametro) {
+        let urlAtual = window.location.href;
+        let parametros = urlAtual.split('/');
+
+        // Encontrar a posição do parâmetro na URL
+        let index = parametros.indexOf(nomeParametro);
+
+        // Verificar se o parâmetro foi encontrado e se há um valor associado a ele
+        if (index !== -1 && index + 1 < parametros.length) {
+            return parametros[index + 1];
+        }
+
+        return null;
+    }
+
+    function updateURL() {
+        var resId = document.getElementById("id").value;
+        document.getElementById("form-res").action = "/saveUpdatedReservation" + (resId ? resId : 'null');
+    }
+
+    // Exemplo de uso: obterValorDoParametro("update-reservation") retornará o valor "1" para a URL "update-reservation/1"
+
+</script>
 </body>
 
 </html>
