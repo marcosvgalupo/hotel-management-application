@@ -117,7 +117,7 @@ public class HotelController {
 
 
     @GetMapping("/deleteGuest/{guest_id}")
-    public String getGuest(@PathVariable Integer guest_id, Model model) {
+    public String deleteGuestByID(@PathVariable Integer guest_id, Model model) {
         guestService.deleteGuest(guest_id);
         List<Guest> guests = guestService.getAllGuests();
         model.addAttribute("guests", guests);
@@ -153,6 +153,15 @@ public class HotelController {
     @GetMapping("/addEmployee")
     public String getAddEmployee(){
         return "new-employee";
+    }
+
+
+    @GetMapping("/deleteGuest/{id}")
+    public String deleteEmployeeById(@PathVariable Integer id, Model model) {
+        employeeService.deleteEmployee(id);
+        List<Guest> employees = guestService.getAllGuests();
+        model.addAttribute("employees", employees);
+        return "redirect:/employees";
     }
 
 

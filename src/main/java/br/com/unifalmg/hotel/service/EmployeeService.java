@@ -3,6 +3,7 @@ package br.com.unifalmg.hotel.service;
 import br.com.unifalmg.hotel.entity.Employee;
 import br.com.unifalmg.hotel.entity.Guest;
 import br.com.unifalmg.hotel.exception.EmployeeNotFoundException;
+import br.com.unifalmg.hotel.exception.GuestNotFoundException;
 import br.com.unifalmg.hotel.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -34,9 +35,10 @@ public class EmployeeService {
     }
 
     public void deleteEmployee(Integer id) {
-        if (repository.existsById(id)) {
+        if (!Objects.isNull(findById(id))) {
             repository.deleteById(id);
         }
+        throw new EmployeeNotFoundException(String.format("Employee with id[%d] not found!!", id));
     }
 
     public List<Employee> orderEmployeesAtoZ() {
