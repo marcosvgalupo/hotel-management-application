@@ -3,6 +3,7 @@ package br.com.unifalmg.hotel.service;
 import br.com.unifalmg.hotel.entity.Guest;
 import br.com.unifalmg.hotel.exception.GuestNotFoundException;
 import br.com.unifalmg.hotel.repository.GuestRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,14 +33,14 @@ public class GuestService {
         repository.save(guest);
     }
 
-//    public void deleteGuest(Integer id) {
-//        if (repository.existsById(id)) {
-//            repository.updateRoomByGuestId(id);
-//            repository.deleteReservationByGuestId(id);
-//            repository.deleteByGuestId(id);
-//        }
-//        throw new GuestNotFoundException(String.format("User with id[%d] not found!!", id));
-//    }
+    @Transactional
+    public void deleteGuest(Integer id) {
+        if (repository.existsById(id)) {
+            repository.setRoomNullFKs(id);
+            repository.deleteGuest(id);
+        }
+        throw new GuestNotFoundException(String.format("User with id[%d] not found!!", id));
+    }
 
     public List<Guest> findByFilter(String name, String last_name, String cpf, Character gender){
         return repository.findByFilter(name, last_name, cpf, gender);
@@ -55,5 +56,9 @@ public class GuestService {
 
     public List<Object[]> guestAndReservation(Integer guest_id){
         return repository.selectGuestAndYoursReservationsByGuestId(guest_id);
+    }
+
+    public void deleteLodgingByGuestId(Integer id){
+        repository.deleteLodgingByGuestId(id);
     }
 }
