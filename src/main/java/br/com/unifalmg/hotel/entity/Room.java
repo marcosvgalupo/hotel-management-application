@@ -33,16 +33,10 @@ public class Room implements Serializable {
     private Integer status;
 
 
-    @Column(name = "manager_id")
-    private Integer manager_id;
-
     @OnDelete(action = OnDeleteAction.SET_NULL)
     @Column(name = "lodging_id")
     private Integer lodging_id;
 
-    @ManyToOne
-    @JoinColumn(name = "guest_id")
-    private Guest guest_id;
 
     @ManyToOne
     @JoinColumn(name = "reservation_id")

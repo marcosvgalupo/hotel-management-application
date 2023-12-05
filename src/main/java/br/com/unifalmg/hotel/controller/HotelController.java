@@ -1,8 +1,6 @@
 package br.com.unifalmg.hotel.controller;
 
 import br.com.unifalmg.hotel.entity.*;
-import br.com.unifalmg.hotel.repository.GuestRepository;
-import br.com.unifalmg.hotel.repository.ReservationRepository;
 import br.com.unifalmg.hotel.service.GuestService;
 import br.com.unifalmg.hotel.service.RoomService;
 import br.com.unifalmg.hotel.service.ManagerService;
@@ -10,11 +8,9 @@ import br.com.unifalmg.hotel.service.EmployeeService;
 import br.com.unifalmg.hotel.service.ReservationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,6 +29,8 @@ public class HotelController {
     private final ReservationService reservationService;
     private final RoomService roomService;
 
+
+    //==========================================================HTML==============================================================
     @GetMapping("/")
     public String getIndex(){
         return "index";
@@ -45,13 +43,34 @@ public class HotelController {
 
     @GetMapping("/home")
     public String getHome(Model model){
-
         return "home";
     }
+
+    //=======================================================MANAGER==================================================================
+
+
+    @PostMapping(value = "/home")
+    public String login(@ModelAttribute Manager manager, Model model) {
+        if (managerService.autenticate(manager.getUsername(), manager.getPassword())) {
+            return "/home";
+        } else {
+            model.addAttribute("mensagem", "Falha na autenticação");
+            return "/index";
+        }
+    }
+
+    //=======================================================GUEST==================================================================
 
     @GetMapping("/guests")
     public String guest(Model model){
         List<Guest> guests = guestService.getAllGuests();
+        model.addAttribute("guests", guests);
+        return "guests";
+    }
+
+    @PostMapping("/guests")
+    public String findFilteredGuests(Model model, @ModelAttribute Guest guest){
+        List<Guest> guests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
         model.addAttribute("guests", guests);
         return "guests";
     }
@@ -70,47 +89,18 @@ public class HotelController {
         return "ordered-guests";
     }
 
-    @PostMapping("/guests")
-    public String findFilteredGuests(Model model, @ModelAttribute Guest guest){
-        List<Guest> guests = guestService.findByFilter(guest.getName(), guest.getLast_name(), guest.getCpf(), guest.getGender());
-        model.addAttribute("guests", guests);
-        return "guests";
-    }
 
     @GetMapping("/addGuest")
     public String getAddGuest(){
         return "new-guest";
     }
 
-    @GetMapping("/employees")
-    public String employees(Model model){
-        List<Employee> employees = employeeService.getAllEmployees();
-        model.addAttribute("employees", employees);
-        return "employees";
-    }
-
-    @GetMapping("/addEmployee")
-    public String getAddEmployee(){
-        return "new-employee";
-    }
-
-
-    @PostMapping(value = "/home")
-    public String login(@ModelAttribute Manager manager, Model model) {
-        if (managerService.autenticate(manager.getUsername(), manager.getPassword())) {
-            return "/home";
-        } else {
-            model.addAttribute("mensagem", "Falha na autenticação");
-            return "/index";
-        }
-    }
-
     @PostMapping("/addGuest")
     public String newGuest(@RequestParam String name,
-                                   @RequestParam String last_name,
-                                   @RequestParam String cpf,
-                                   @RequestParam String cellphone,
-                                   @RequestParam String gender) {
+                           @RequestParam String last_name,
+                           @RequestParam String cpf,
+                           @RequestParam String cellphone,
+                           @RequestParam String gender) {
         Guest newGuest = Guest.builder()
                 .name(name)
                 .last_name(last_name)
@@ -124,10 +114,11 @@ public class HotelController {
         return "redirect:/guests";
     }
 
-//    @DeleteMapping("/deleteGuest/{guest_id}")
-//    public void deleteGuest(@PathVariable Integer guest_id) {
-//        guestService.deleteGuest(guest_id);
-//    }
+    @DeleteMapping("/deleteGuest/{guest_id}")
+    public void deleteGuest(@PathVariable Integer guest_id) {
+        guestService.deleteLodgingByGuestId(guest_id);
+        guestService.deleteGuest(guest_id);
+    }
 
     @GetMapping("/deleteGuest/{guest_id}")
     public String getGuest(@PathVariable Integer guest_id, Model model) {
@@ -153,6 +144,20 @@ public class HotelController {
 
         return "redirect:/guests";
     }
+
+    //===========================================================EMPLOYEES=====================================================================
+    @GetMapping("/employees")
+    public String employees(Model model){
+        List<Employee> employees = employeeService.getAllEmployees();
+        model.addAttribute("employees", employees);
+        return "employees";
+    }
+
+    @GetMapping("/addEmployee")
+    public String getAddEmployee(){
+        return "new-employee";
+    }
+
 
     @PostMapping("/addEmployee")
     public String newEmployee(@RequestParam String name,
@@ -213,6 +218,16 @@ public class HotelController {
         model.addAttribute("employees", employees);
         return "ordered-employees";
     }
+
+    @PostMapping("/employees")
+    public String filteredEmployees(Model model, @ModelAttribute Employee employee){
+        List<Employee> employees = employeeService.filteredEmployees(employee.getName(), employee.getLast_name(), employee.getCnh(), employee.getGender());
+        model.addAttribute("employees", employees);
+        return "/employees";
+    }
+
+
+    //===========================================================RESERVATION==================================================================
 
     @GetMapping("/reservation")
     public String reservations(Model model){
@@ -295,6 +310,15 @@ public class HotelController {
         return "redirect:/reservation";
     }
 
+    @GetMapping("/countReservation")
+    public String countReservation(Model model){
+        List<Object[]> reservations = reservationService.countReservationsByManager();
+        model.addAttribute("reservations", reservations);
+        return "count-reservations";
+    }
+
+    //===========================================================ROOM=====================================================================
+
     @GetMapping("/statusRoom/{status}")
     public String statusRoom(Model model, @PathVariable Integer status){
         List<Room> rooms = roomService.statusRoom(status);
@@ -303,12 +327,8 @@ public class HotelController {
     }
 
 
-    @GetMapping("/countReservation")
-    public String countReservation(Model model){
-        List<Object[]> reservations = reservationService.countReservationsByManager();
-        model.addAttribute("reservations", reservations);
-        return "count-reservations";
-    }
+    //===========================================================REPORT=====================================================================
+
 
     @GetMapping("/guestAndReservation/{id}")
     public String guestAndReservation(Model model, @PathVariable Integer id){
@@ -317,12 +337,7 @@ public class HotelController {
         return "guests-reservations";
     }
 
-    @PostMapping("/employees")
-    public String filteredEmployees(Model model, @ModelAttribute Employee employee){
-        List<Employee> employees = employeeService.filteredEmployees(employee.getName(), employee.getLast_name(), employee.getCnh(), employee.getGender());
-        model.addAttribute("employees", employees);
-        return "/employees";
-    }
+
 
 
 }
