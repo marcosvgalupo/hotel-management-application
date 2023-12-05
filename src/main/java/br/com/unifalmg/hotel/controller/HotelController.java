@@ -127,9 +127,7 @@ public class HotelController {
     @GetMapping("/updateGuest/{id}")
     public String updateGuest(@PathVariable Integer id, Model model) {
         Guest existingGuest = guestService.findById(id);
-
         model.addAttribute("guests", existingGuest);
-
         return "update-guest";
     }
 
@@ -138,7 +136,6 @@ public class HotelController {
     @PostMapping("/saveUpdatedGuest")
     public String saveUpdatedGuest(@ModelAttribute Guest updatedGuest) {
         guestService.saveGuest(updatedGuest);
-
         return "redirect:/guests";
     }
 
@@ -274,40 +271,15 @@ public class HotelController {
     @GetMapping("/updateReservation/{id}")
     public String updateReservation(@PathVariable Integer id, Model model) {
         Reservation existingReservation = reservationService.findById(id);
-
         model.addAttribute("reservation", existingReservation);
-
         return "update-reservation";
     }
 
 
 
     @PostMapping("/saveUpdatedReservation")
-    public String saveUpdatedReservation(
-            @RequestParam("checkin_date") String checkin_date,
-            @RequestParam("checkout_date") String checkout_date,
-            @RequestParam("id") String id) {
-
-
-        Date checkinDateSql = null;
-        Date checkoutDateSql = null;
-
-        try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date utilCheckinDate = sdf.parse(checkin_date);
-            java.util.Date utilCheckoutDate = sdf.parse(checkout_date);
-
-            checkinDateSql = new Date(utilCheckinDate.getTime());
-            checkoutDateSql = new Date(utilCheckoutDate.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        reservationService.saveUpdateReservation(
-                Integer.parseInt(id),
-                (java.sql.Date) checkinDateSql,
-                (java.sql.Date) checkoutDateSql
-        );
+    public String saveUpdatedReservation(@ModelAttribute Reservation updatedReservation) {
+        reservationService.saveReservation(updatedReservation);
         return "redirect:/reservation";
     }
 
