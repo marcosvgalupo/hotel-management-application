@@ -60,21 +60,21 @@ public interface GuestRepository extends JpaRepository<Guest,Integer>{
 //    void updateRoomByGuestId(Integer guest_id);
 
     //essa ta certa (testei no mysql)
-    @Modifying
-    @Transactional
-    @Query("UPDATE Room SET reservation_id = NULL, lodging_id = NULL WHERE reservation_id IN (SELECT reservation_id FROM Reservation WHERE guest_id = :id)")
-    void setRoomNullFKs(Integer id);
-
-
-
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM Lodging WHERE lodging_id IN (SELECT r.lodging_id FROM Reservation r WHERE r.guest_id = :id)")
-    void deleteLodgingByGuestId(@Param("id") Integer id);
-
-    @Modifying
-    @Transactional
-    @Query("DELETE FROM Guest g WHERE g.guest_id = :id")
-    void deleteGuest(@Param("id") Integer id);
+//    @Modifying
+//    @Transactional
+//    @Query("UPDATE Room SET reservation_id = NULL, lodging_id = NULL WHERE reservation_id IN (SELECT reservation_id FROM Reservation WHERE guest_id = :id)")
+//    void setRoomNullFKs(Integer id);
+//
+//
+//
+//    @Modifying
+//    @Transactional
+//    @Query("DELETE FROM Lodging WHERE lodging_id IN (SELECT r.lodging_id FROM Reservation r WHERE r.guest_id = :id)")
+//    void deleteLodgingByGuestId(@Param("id") Integer id);
+//
+//    @Modifying
+//    @Transactional
+//    @Query("DELETE FROM Guest g WHERE g.guest_id = :id")
+//    void deleteGuest(@Param("id") Integer id);
 
 }

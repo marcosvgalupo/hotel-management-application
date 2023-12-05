@@ -116,7 +116,7 @@ public class HotelController {
 
     @DeleteMapping("/deleteGuest/{guest_id}")
     public void deleteGuest(@PathVariable Integer guest_id) {
-        guestService.deleteLodgingByGuestId(guest_id);
+//        guestService.deleteLodgingByGuestId(guest_id);
         guestService.deleteGuest(guest_id);
     }
 
@@ -270,7 +270,7 @@ public class HotelController {
         return "redirect:/reservation";
     }
 
-    @GetMapping("/update-reservation/{id}")
+    @GetMapping("/updateReservation/{id}")
     public String updateReservation(@PathVariable Integer id, Model model) {
         Reservation existingReservation = reservationService.findById(id);
 
