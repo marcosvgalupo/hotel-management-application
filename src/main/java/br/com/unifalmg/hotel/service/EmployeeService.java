@@ -34,9 +34,10 @@ public class EmployeeService {
     }
 
     public void deleteEmployee(Integer id) {
-        if (repository.existsById(id)) {
+        if (!Objects.isNull(findById(id))) {
             repository.deleteById(id);
         }
+        throw new EmployeeNotFoundException("Employee not found");
     }
 
     public List<Employee> orderEmployeesAtoZ() {
