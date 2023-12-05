@@ -114,17 +114,14 @@ public class HotelController {
         return "redirect:/guests";
     }
 
-    @DeleteMapping("/deleteGuest/{guest_id}")
-    public void deleteGuest(@PathVariable Integer guest_id) {
-//        guestService.deleteLodgingByGuestId(guest_id);
-        guestService.deleteGuest(guest_id);
-    }
+
 
     @GetMapping("/deleteGuest/{guest_id}")
     public String getGuest(@PathVariable Integer guest_id, Model model) {
+        guestService.deleteGuest(guest_id);
         List<Guest> guests = guestService.getAllGuests();
         model.addAttribute("guests", guests);
-        return "guests";
+        return "redirect:/guests";
     }
 
     @GetMapping("/updateGuest/{id}")
