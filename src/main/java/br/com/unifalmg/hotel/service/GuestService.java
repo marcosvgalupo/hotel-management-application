@@ -33,11 +33,9 @@ public class GuestService {
         repository.save(guest);
     }
 
-    @Transactional
+
     public void deleteGuest(Integer id) {
-        if (repository.existsById(id)) {
-//            repository.setRoomNullFKs(id);
-//            repository.deleteGuest(id);
+        if (!Objects.isNull(findById(id))) {
               repository.deleteById(id);
         }
         throw new GuestNotFoundException(String.format("User with id[%d] not found!!", id));
