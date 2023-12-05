@@ -486,3 +486,27 @@ th {
     color: white;
     border-radius: 1.5em;
 }
+
+.update-guest-form {
+    width: 50vh;
+    height: 70vh;
+}
+
+.update-guest-form input {
+    margin: auto;
+    width: 50vh;
+    height: 5vh;
+}
+
+.update-guest-form button {
+    margin: 2em auto 0em auto;
+}
+
+.update-reservation-form {
+    width: 30vh;
+    height: 50vh;
+}
+
+.update-guest-form-button {
+    margin: 1.5em auto 0 auto;
+}

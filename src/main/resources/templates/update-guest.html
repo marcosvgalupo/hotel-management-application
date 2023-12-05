@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-<!--    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">-->
+    <link rel="stylesheet" href="../main.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
     <title>HOTEL BEIRA-MAR</title>
 </head>
@@ -17,26 +17,26 @@
         <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
     </div>
 
-    <a class="back-button" href="/home"><img src="seta-esquerda.png"></a>
+    <a class="back-button" href="/home"><img src="../seta-esquerda.png"></a>
     <div class="content">
         <div class="login-field">
         <h2>Atualizar Hóspede</h2>
-<!--        <form action="/saveUpdatedGuest" method="post">-->
-<!--            <input type="hidden" th:field="${guests.guest_id}" name="id" />-->
-<!--            <label for="nome">Nome:</label>-->
-<!--            <input type="text" th:field="${guests.name}" name="nome" required />-->
-<!--            <label for="sobrenome">Sobrenome:</label>-->
-<!--            <input type="text" th:field="${guests.last_name}" name="sobrenome" required />-->
-<!--            <label for="cpf">CPF:</label>-->
-<!--            <input type="text" th:field="${guests.cpf}" name="cpf" required />-->
-<!--            <label for="telefone">Telefone:</label>-->
-<!--            <input type="text" th:field="${guests.cellphone}" name="telefone" required />-->
-<!--            <label for="sexo">Sexo:</label>-->
-<!--            <input type="text" th:field="${guests.gender}" name="sexo" required />-->
+        <form action="/saveUpdatedGuest" method="post" class="update-guest-form">
+            <input type="hidden" th:field="${guests.guest_id}" name="id" />
+            <label for="nome">Nome:</label>
+            <input type="text" th:field="${guests.name}" name="nome" required />
+            <label for="sobrenome">Sobrenome:</label>
+            <input type="text" th:field="${guests.last_name}" name="sobrenome" required />
+            <label for="cpf">CPF:</label>
+            <input type="text" th:field="${guests.cpf}" name="cpf" required />
+            <label for="telefone">Telefone:</label>
+            <input type="text" th:field="${guests.cellphone}" name="telefone" required />
+            <label for="sexo">Sexo:</label>
+            <input type="text" th:field="${guests.gender}" name="sexo" required />
 
 
-<!--            <button type="submit">Salvar Atualizações</button>-->
-<!--        </form>-->
+            <button type="submit">Salvar Atualizações</button>
+        </form>
         </div>
     </div>
 </main>

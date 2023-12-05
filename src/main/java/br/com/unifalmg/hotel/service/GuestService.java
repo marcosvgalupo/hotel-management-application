@@ -36,8 +36,9 @@ public class GuestService {
     @Transactional
     public void deleteGuest(Integer id) {
         if (repository.existsById(id)) {
-            repository.setRoomNullFKs(id);
-            repository.deleteGuest(id);
+//            repository.setRoomNullFKs(id);
+//            repository.deleteGuest(id);
+              repository.deleteById(id);
         }
         throw new GuestNotFoundException(String.format("User with id[%d] not found!!", id));
     }
@@ -58,7 +59,7 @@ public class GuestService {
         return repository.selectGuestAndYoursReservationsByGuestId(guest_id);
     }
 
-    public void deleteLodgingByGuestId(Integer id){
-        repository.deleteLodgingByGuestId(id);
-    }
+//    public void deleteLodgingByGuestId(Integer id){
+//        repository.deleteLodgingByGuestId(id);
+//    }
 }
