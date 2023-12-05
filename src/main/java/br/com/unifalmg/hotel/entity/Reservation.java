@@ -26,14 +26,10 @@ public class Reservation implements Serializable {
     private Integer status;
 
     @Column(name = "checkin_date")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.DATE)
-    private java.sql.Date checkin_date;
+    private String checkin_date;
 
     @Column(name = "checkout_date")
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private java.sql.Date checkout_date;
+    private String checkout_date;
 
     @ManyToOne
     @JoinColumn(name = "manager_id")
@@ -47,7 +43,7 @@ public class Reservation implements Serializable {
     @JoinColumn(name = "guest_id")
     private Guest guest_id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "room_id")
     private Room room_id;
 }

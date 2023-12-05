@@ -239,21 +239,25 @@ public class HotelController {
     }
 
     @PostMapping("/addReservation")
-    public String addReservation(@RequestParam Guest guest_id,
-                           @RequestParam Manager manager_id,
+    public String addReservation(
+                           @RequestParam Integer reservation_id,
+                           @ModelAttribute Manager manager_id,
+                           @RequestParam Integer status,
+                           @ModelAttribute Lodging lodging_id,
+                           @ModelAttribute Guest guest_id,
                            @RequestParam Room room_id,
-                           @RequestParam Lodging lodging_id,
-                           @RequestParam Date checkin_date,
-                                 @RequestParam Date checkout_date
+                           @RequestParam String checkin_date,
+                           @RequestParam String checkout_date
                                  ) {
         Reservation newReservation = Reservation.builder()
+                .reservation_id(reservation_id)
+                .status(status)
                 .manager_id(manager_id)
-                .guest_id(guest_id)
-                .status(1)
-                .room_id(room_id)
                 .lodging_id(lodging_id)
-                .checkin_date((java.sql.Date) checkin_date)
-                .checkout_date((java.sql.Date) checkout_date)
+                .guest_id(guest_id)
+                .room_id(room_id)
+                .checkin_date(checkin_date)
+                .checkout_date(checkout_date)
                 .build();
 
         reservationService.saveReservation(newReservation);
