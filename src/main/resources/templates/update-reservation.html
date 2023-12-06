@@ -17,22 +17,44 @@
         <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
     </div>
 
+
     <a class="back-button" href="/home"><img src="../seta-esquerda.png"></a>
     <div class="content">
         <div class="login-field">
-        <h2>Atualizar Reserva</h2>
             <form  action="/saveUpdatedReservation" method="post" class="update-reservation-form">
-                <input type="number" th:field="${reservation.reservation_id}" name="id"/>
-                <label for="checkin_date">Data Entrada</label>
-                <input type="date" th:field="${reservation.checkin_date}" name="checkin_date" required />
-                <input type="number" th:field="${reservation.room_id}" name="room_id"/>
-                <input type="number" th:field="${reservation.lodging_id}" name="lodging_id"/>
-                <input type="number" th:field="${reservation.status}" name="status"/>
-                <input type="number" th:field="${reservation.manager_id}" name="manager_id"/>
-                <input type="number" th:field="${reservation.guest_id}" name="status"/>
-                <label for="checkout_date" >Data Saída</label>
-                <input type="date" th:field="${reservation.checkout_date}" name="checkout_date" required />
-                <button type="submit" class="update-guest-form-button">Salvar Atualizações</button>
+
+                <div>
+                    <label for="reservation_id">ID Reserva</label>
+                    <input type="number" th:field="${reservation.reservation_id}" name="id"/>
+
+                    <label for="checkin_date">Data Entrada</label>
+                    <input type="date" th:field="${reservation.checkin_date}" name="checkin_date" required />
+
+                    <label for="checkout_date" >Data Saída</label>
+                    <input type="date" th:field="${reservation.checkout_date}" name="checkout_date" required />
+
+                    <label for="room_id">ID Quarto</label>
+                    <input type="number" th:field="${reservation.room_id.room_number}" name="room_id"/>
+
+                </div>
+
+                <div>
+                    <label for="lodging_id">ID Hospedagem</label>
+                    <input type="number" th:field="${reservation.lodging_id.lodging_id}" name="lodging_id"/>
+
+                    <label for="status">Status do Quarto</label>
+                    <input type="number" th:field="${reservation.status}" name="status"/>
+
+                    <label for="manager_id">ID Gerente</label>
+                    <input type="number" th:field="${reservation.manager_id.manager_id}" name="manager_id"/>
+
+                    <label for="guest_id">ID Hóspede</label>
+                    <input type="number" th:field="${reservation.guest_id.guest_id}" name="status"/>
+                </div>
+
+
+
+                <button type="submit" class="update-guest-form-button">Salvar</button>
         </form>
         </div>
     </div>

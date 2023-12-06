@@ -3,6 +3,7 @@ package br.com.unifalmg.hotel.controller;
 import br.com.unifalmg.hotel.entity.*;
 import br.com.unifalmg.hotel.service.GuestService;
 import br.com.unifalmg.hotel.service.RoomService;
+import br.com.unifalmg.hotel.service.RoomTypeService;
 import br.com.unifalmg.hotel.service.ManagerService;
 import br.com.unifalmg.hotel.service.EmployeeService;
 import br.com.unifalmg.hotel.service.ReservationService;
@@ -28,6 +29,8 @@ public class HotelController {
     private final EmployeeService employeeService;
     private final ReservationService reservationService;
     private final RoomService roomService;
+    private final RoomTypeService roomTypeService;
+
 
 
     //==========================================================HTML==============================================================
@@ -39,6 +42,16 @@ public class HotelController {
     @GetMapping("/report")
     public String getReport(){
         return "report";
+    }
+
+    @GetMapping("/report2")
+    public String getReport2(){
+        return "report-2";
+    }
+
+    @GetMapping("/report3")
+    public String getReport3(){
+        return "report-3";
     }
 
     @GetMapping("/home")
@@ -57,6 +70,13 @@ public class HotelController {
             model.addAttribute("mensagem", "Falha na autenticação");
             return "/index";
         }
+    }
+
+    @GetMapping("/managerAndEmployees")
+    public String getEmployeesAndManager(Model model){
+        List<Object[]> managers = managerService.employeeAndManager();
+        model.addAttribute("managers", managers);
+        return "managers-and-employees";
     }
 
     //=======================================================GUEST==================================================================
@@ -137,6 +157,27 @@ public class HotelController {
     public String saveUpdatedGuest(@ModelAttribute Guest updatedGuest) {
         guestService.saveGuest(updatedGuest);
         return "redirect:/guests";
+    }
+
+    @GetMapping("/mostExpensiveGuests")
+    public String getGuestsWithHighestExpenses(Model model){
+        List<Object[]> guests = guestService.findGuestsWithHighestExpenses();
+        model.addAttribute("guests", guests);
+        return "expensive-guests";
+    }
+
+    @GetMapping("/lessExpensiveGuests")
+    public String getGuestsWithLowestExpenses(Model model){
+        List<Object[]> guests = guestService.findGuestsWithLowestExpenses();
+        model.addAttribute("guests", guests);
+        return "expensive-guests";
+    }
+
+    @GetMapping("/averagePriceByGuest")
+    public String AvgPriceByGuest(Model model){
+        List<Object[]> guests = guestService.AvgPriceByGuest();
+        model.addAttribute("guests", guests);
+        return "average-lodging-price";
     }
 
     //===========================================================EMPLOYEES=====================================================================
@@ -290,6 +331,27 @@ public class HotelController {
         return "count-reservations";
     }
 
+    @GetMapping("/reservationsDetails")
+    public String getReservationsDetails(Model model){
+        List<Object[]> reservations = reservationService.getReservationDetails();
+        model.addAttribute("reservations", reservations);
+        return "reservations-details";
+    }
+
+    @GetMapping("/lodgingAndReservations")
+    public String getLodgingAndReservations(Model model){
+        List<Object[]> reservations = reservationService.getLodgingAndReservation();
+        model.addAttribute("reservations", reservations);
+        return "lodging-and-reservations";
+    }
+
+    @GetMapping("/reservationByRoomType")
+    public String getReservationByRoomType(Model model){
+        List<Object[]> rooms = roomService.reservationsByRoomType();
+        model.addAttribute("rooms", rooms);
+        return "reservations-roomtype";
+    }
+
     //===========================================================ROOM=====================================================================
 
     @GetMapping("/statusRoom/{status}")
@@ -298,6 +360,15 @@ public class HotelController {
         model.addAttribute("rooms", rooms);
         return "status-rooms";
     }
+
+    @GetMapping("/roomsAndTypes")
+    public String getRoomsAndTypes(Model model){
+        List<Object[]> rooms = roomService.roomsAndTypes();
+        model.addAttribute("rooms", rooms);
+        return "rooms-and-types";
+    }
+
+
 
 
     //===========================================================REPORT=====================================================================
@@ -308,6 +379,13 @@ public class HotelController {
         List<Object[]> guests = guestService.guestAndReservation(id);
         model.addAttribute("guests", guests);
         return "guests-reservations";
+    }
+
+    @GetMapping("/guestAndReservationByLodging/{id}")
+    public String guestAndReservationByLodgingId(Model model, @PathVariable Integer id){
+        List<Object[]> guests = guestService.GuestAndReservationByLodgingId(id);
+        model.addAttribute("guests", guests);
+        return "guests-reservations-by-lodging-id";
     }
 
 
