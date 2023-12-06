@@ -471,6 +471,7 @@ th {
     margin: auto;
 }
 
+
 .home-a {
     background-color: #990100;
     text-decoration: none;
@@ -503,10 +504,20 @@ th {
 }
 
 .update-reservation-form {
-    width: 30vh;
+    display: flex;
+    margin: auto;
+    width: 80%;
     height: 50vh;
+    flex-wrap: wrap;
+    gap:1em;
 }
 
 .update-guest-form-button {
     margin: 1.5em auto 0 auto;
+}
+
+.update-reservation-form div {
+    width: 40%;
+    height: 50vh;
+    gap: 1em;
 }

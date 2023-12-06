@@ -5,6 +5,7 @@ import br.com.unifalmg.hotel.entity.Room;
 import br.com.unifalmg.hotel.exception.RoomNotFoundException;
 import br.com.unifalmg.hotel.repository.RoomRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +34,13 @@ public class RoomService {
         return repository.statusRoom(status);
     }
 
+    public List<Object[]> roomsAndTypes() {
+        return repository.roomsAndTypes();
+    }
+
+    public List<Object[]> reservationsByRoomType() {
+        return repository.reservationsByRoomType();
+    }
 
 
 }

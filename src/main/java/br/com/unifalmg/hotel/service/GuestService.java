@@ -57,7 +57,19 @@ public class GuestService {
         return repository.selectGuestAndYoursReservationsByGuestId(guest_id);
     }
 
-//    public void deleteLodgingByGuestId(Integer id){
-//        repository.deleteLodgingByGuestId(id);
-//    }
+    public List<Object[]> GuestAndReservationByLodgingId(Integer id){
+        return repository.selectGuestAndReservationByLodgingId(id);
+    }
+
+    public List<Object[]> findGuestsWithHighestExpenses(){
+        return repository.findGuestsWithHighestExpenses();
+    }
+
+    public List<Object[]> findGuestsWithLowestExpenses(){
+        return repository.findGuestsWithLowestExpenses();
+    }
+
+    public List<Object[]> AvgPriceByGuest(){
+        return repository.AvgPriceByGuest();
+    }
 }

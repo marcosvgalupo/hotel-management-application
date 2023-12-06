@@ -39,5 +39,9 @@ public class ManagerService {
            }
         }
 
+    public List<Object[]> employeeAndManager() {
+        return repository.employeeAndManager();
+    }
+
 
 }

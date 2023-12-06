@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="main.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <title>HOTEL BEIRA-MAR</title>
+
+    <script>
+        function updateURL() {
+            var guestId = document.getElementById("guestId").value;
+            document.getElementById("guestForm").action = "/guestAndReservationByLodging/" + (guestId ? guestId : 'null');
+        }
+    </script>
+</head>
+<body>
+  <main>
+    <div class="hotel-header">
+        <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
+    </div>
+<a class="back-button" href="/home"><img src="seta-esquerda.png"></a>
+<div class="content">
+    <a class="back-button" href="report-2"><img src="seta-esquerda.png"></a>
+  <div class="choose-field" id="reserva-choose-field">
+
+    <div class="report-field">
+          <div>
+              <a class="report-a" href="/reservationsDetails">Detalhes de Reservas</a>
+              <a class="report-a" href="/lodgingAndReservations">Hospedagens/Reservas</a>
+              <a class="report-a" href="/roomsAndTypes">Tipo Quarto</a>
+              <a class="report-a" href="/managerAndEmployees">Empregados/Gerentes</a>
+              <a class="report-a" href="/averagePriceByGuest">Preço médio hospedagem</a>
+              <a class="report-a" href="/reservationByRoomType">sem nada</a>
+          </div>
+
+          <div>
+              <a class="report-a" href="/mostExpensiveGuests">Hospedagens por preço (decrescente)</a>
+              <a class="report-a" href="/lessExpensiveGuests">Hospedagens por preço (crescente)</a>
+              <a class="report-a" href="/reservationByRoomType">Reservas por Tipo Quarto</a>
+              <a class="report-a" href="/reservationByRoomType">sem nada</a>
+              <a class="report-a" href="/reservationByRoomType">sem nada</a>
+              <a class="report-a" href="/reservationByRoomType">sem nada</a>
+          </div>
+
+        <form id="guestForm" onsubmit="updateURL()" method="get">
+            <label for="guestId">ID da Hospedagem:</label>
+            <input type="number" id="guestId" name="id" required>
+            <button type="submit">Reservas</button>
+        </form>
+
+    </div>
+</div>
+    <a class="back-button" href="report-2"><img src="seta-direita.png"></a>
+</div>
+</main>
+<footer>
+</footer>
+</body>
+</html>

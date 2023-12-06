@@ -46,4 +46,15 @@ public class ReservationService {
         return repository.countReservationsByManager();
     }
 
+    public List<Object[]> getReservationDetails() {
+        return repository.getReservationDetails();
+    }
+
+    public List<Object[]> getLodgingAndReservation() {
+        return repository.lodgingAndReservation();
+    }
+
+
+
+
 }
