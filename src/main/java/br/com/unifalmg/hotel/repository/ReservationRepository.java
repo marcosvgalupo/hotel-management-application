@@ -20,5 +20,21 @@ public interface ReservationRepository extends JpaRepository<Reservation,Integer
     @Query("SELECT l.lodging_id , r.reservation_id FROM Lodging l JOIN Reservation r ON l.lodging_id = r.lodging_id.lodging_id")
     List<Object[]> lodgingAndReservation();
 
+    @Query("SELECT g.name, r.reservation_id, l.total_price " +
+            "FROM Guest g " +
+            "JOIN Reservation r ON g.guest_id = r.guest_id.guest_id " +
+            "JOIN Lodging l ON l.lodging_id = r.lodging_id.lodging_id " +
+            "GROUP BY g.guest_id, g.name, r.reservation_id, l.total_price " +
+            "HAVING l.total_price > (:price)")
+    List<Object[]> reservationPriceGreaterThan(Integer price);
+
+    @Query("SELECT g.name, r.reservation_id, l.total_price " +
+            "FROM Guest g " +
+            "JOIN Reservation r ON g.guest_id = r.guest_id.guest_id " +
+            "JOIN Lodging l ON l.lodging_id = r.lodging_id.lodging_id " +
+            "GROUP BY g.guest_id, g.name, r.reservation_id, l.total_price " +
+            "HAVING l.total_price < (:price)")
+    List<Object[]> reservationPriceLowerThan(Integer price);
+
 
 }

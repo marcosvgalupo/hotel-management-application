@@ -13,7 +13,11 @@
     <script>
         function updateURL() {
             var guestId = document.getElementById("guestId").value;
-            document.getElementById("guestForm").action = "/guestAndReservationByLodging/" + (guestId ? guestId : 'null');
+            document.getElementById("guestForm").action = "/reservationPriceGreaterThan/" + (guestId ? guestId : 'null');
+        }
+        function updateURL2() {
+            var guestId = document.getElementById("guestId2").value;
+            document.getElementById("guestForm2").action = "/reservationPriceLowerThan/" + (guestId ? guestId : 'null');
         }
     </script>
 </head>
@@ -36,6 +40,19 @@
               <a class="report-a" href="/updateManager/1">Editar Gerente 1</a>
               <a class="report-a" href="/updateManager/2">Editar Gerente 2</a>
           </div>
+
+        <div>
+            <form id="guestForm" onsubmit="updateURL()" method="get">
+                <label for="guestId">Preço Mínimo:</label>
+                <input type="number" id="guestId" name="id" required>
+                <button type="submit">Reservas</button>
+            </form>
+            <form id="guestForm2" onsubmit="updateURL2()" method="get">
+                <label for="guestId">Preço Máximo:</label>
+                <input type="number" id="guestId2" name="id" required>
+                <button type="submit">Reservas</button>
+            </form>
+        </div>
     </div>
 </div>
     <a class="back-button" href="/report"><img src="seta-direita.png"></a>

@@ -54,6 +54,14 @@ public class ReservationService {
         return repository.lodgingAndReservation();
     }
 
+    public List<Object[]> reservationPriceGreaterThan(Integer price){
+        return repository.reservationPriceGreaterThan(price);
+    }
+
+    public List<Object[]> reservationPriceLowerThan(Integer price){
+        return repository.reservationPriceLowerThan(price);
+    }
+
 
 
 
