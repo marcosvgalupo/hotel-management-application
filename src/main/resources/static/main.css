@@ -90,10 +90,15 @@ footer h1:hover {
     min-height: 80vh;
 }
 
+.login-index {
+    background-color: #990100;
+    color: white;
+    text-transform: uppercase;
+}
 
 .login-button p {
     font-size: 40px;
-    color: white;   
+    color: white;
 }
 
 .login-field {
@@ -249,8 +254,8 @@ button{
     border: 0;
     outline: none;
     border-radius: 1em;
-    background-color: #161616;
-    color: #e8e8e8;
+    /*background-color: #161616;*/
+    /*color: #e8e8e8;*/
     margin: 0 auto;
 }
 
@@ -384,9 +389,14 @@ button:hover{
 }
 
 .search-button{
-    width: 5%;
-    height: 3vh;
-    margin-left: 1em;
+    width: 3.5%;
+    height: 4.7vh;
+    border-radius: 0.4em;
+}
+
+.search-button img {
+    width: 100%;
+    height: 4.2vh;
 }
 
 .reservation-form {
@@ -436,6 +446,23 @@ th {
 .delete-link {
     width: 4em;
     height: 3vh;
+    text-align: center;
+}
+
+.delete-link a {
+    display: flex;
+    justify-content: center;
+    background-color: #990100;
+    text-decoration: none;
+    color: white;
+    margin: 0.2em;
+    width: 1.5em;
+    height: 1em;
+    border-radius: 0.2em;
+}
+
+.delete-link a:nth-child(2) {
+    background-color: forestgreen;
 }
 
 .delete-link a {

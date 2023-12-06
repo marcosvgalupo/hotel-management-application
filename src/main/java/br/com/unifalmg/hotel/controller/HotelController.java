@@ -79,6 +79,22 @@ public class HotelController {
         return "managers-and-employees";
     }
 
+
+    @GetMapping("/updateManager/{id}")
+    public String updateManager(@PathVariable Integer id, Model model) {
+        Manager manager = managerService.findById(id);
+        model.addAttribute("manager", manager);
+        return "update-manager";
+    }
+
+    @PostMapping("/saveUpdatedManager")
+    public String updateRoomType(@ModelAttribute("manager") Manager manager) {
+        managerService.updateManager(manager.getUsername(), manager.getPassword());
+        return "redirect:/report3";
+
+    }
+
+
     //=======================================================GUEST==================================================================
 
     @GetMapping("/guests")
@@ -376,11 +392,6 @@ public class HotelController {
         return "update-room-type";
     }
 
-//    @PostMapping("/saveUpdatedRoomType")
-//    public String saveUpdatedRoomType(@ModelAttribute RoomType updatedRoomType) {
-//        roomTypeService.saveRoomType(updatedRoomType);
-//        return "redirect:/report3";
-//    }
 
     @PostMapping("/saveUpdatedRoomType")
     public String updateRoomType(@ModelAttribute("roomType") RoomType roomType) {
