@@ -521,3 +521,8 @@ th {
     height: 50vh;
     gap: 1em;
 }
+
+.description-input {
+    width: 30em;
+    height: 30vh;
+}
