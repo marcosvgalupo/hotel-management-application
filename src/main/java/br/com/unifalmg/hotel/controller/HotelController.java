@@ -369,6 +369,26 @@ public class HotelController {
     }
 
 
+    @GetMapping("/updateRoomType/{id}")
+    public String updateRoomType(@PathVariable Integer id, Model model) {
+        RoomType roomType = roomTypeService.findById(id);
+        model.addAttribute("roomType", roomType);
+        return "update-room-type";
+    }
+
+//    @PostMapping("/saveUpdatedRoomType")
+//    public String saveUpdatedRoomType(@ModelAttribute RoomType updatedRoomType) {
+//        roomTypeService.saveRoomType(updatedRoomType);
+//        return "redirect:/report3";
+//    }
+
+    @PostMapping("/saveUpdatedRoomType")
+    public String updateRoomType(@ModelAttribute("roomType") RoomType roomType) {
+        roomTypeService.updateRoomTypeDescription(roomType.getCode(), roomType.getDescription());
+        return "redirect:/report3";
+
+    }
+
 
 
     //===========================================================REPORT=====================================================================
