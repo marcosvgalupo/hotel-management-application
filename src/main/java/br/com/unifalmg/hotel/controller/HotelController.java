@@ -419,6 +419,19 @@ public class HotelController {
         return "guests-reservations-by-lodging-id";
     }
 
+    @GetMapping("/reservationPriceGreaterThan/{price}")
+    public String reservationPriceGreaterThan(Model model, @PathVariable Integer price){
+        List<Object[]> reservations = reservationService.reservationPriceGreaterThan(price);
+        model.addAttribute("reservations", reservations);
+        return "reservations-by-price";
+    }
+
+    @GetMapping("/reservationPriceLowerThan/{price}")
+    public String reservationPriceLowerThan(Model model, @PathVariable Integer price){
+        List<Object[]> reservations = reservationService.reservationPriceLowerThan(price);
+        model.addAttribute("reservations", reservations);
+        return "reservations-by-price";
+    }
 
 
 
