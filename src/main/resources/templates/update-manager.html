@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <title>HOTEL BEIRA-MAR</title>
+</head>
+
+<body>
+<main>
+    <div class="hotel-header">
+        <h1 class="hotel-header-title">HOTEL BEIRA-MAR</h1>
+    </div>
+
+    <a class="back-button" href="/home"><img src="../seta-esquerda.png"></a>
+    <div class="content">
+        <div class="login-field">
+        <form action="/saveUpdatedManager" method="post" class="update-guest-form">
+            <input type="hidden" th:field="${manager.manager_id}" name="id" />
+            <input type="hidden" th:field="${manager.last_name}" name="id" />
+            <input type="hidden" th:field="${manager.name}" name="id" />
+
+            <label for="username">Usuário:</label>
+            <input type="text" th:field="${manager.username}" name="username" />
+
+            <label for="username">Senha:</label>
+            <input type="text" th:field="${manager.password}" name="password" />
+
+            <button type="submit">Salvar Atualizações</button>
+        </form>
+        </div>
+    </div>
+</main>
+<footer>
+</footer>
+</body>
+
+</html>
