@@ -9,14 +9,10 @@ import br.com.unifalmg.hotel.service.EmployeeService;
 import br.com.unifalmg.hotel.service.ReservationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
-import java.util.Date;
 import java.util.List;
 
 @Log4j2
@@ -154,7 +150,7 @@ public class HotelController {
 
     @GetMapping("/deleteGuest/{guest_id}")
     public String getGuest(@PathVariable Integer guest_id, Model model) {
-        guestService.deleteGuest(guest_id);
+        guestService.deleteById(guest_id);
         List<Guest> guests = guestService.getAllGuests();
         model.addAttribute("guests", guests);
         return "redirect:/guests";

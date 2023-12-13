@@ -3,7 +3,6 @@ package br.com.unifalmg.hotel.service;
 import br.com.unifalmg.hotel.entity.Guest;
 import br.com.unifalmg.hotel.exception.GuestNotFoundException;
 import br.com.unifalmg.hotel.repository.GuestRepository;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -34,14 +33,19 @@ public class GuestService {
     }
 
 
-    public void deleteGuest(Integer id) {
+    public void deleteById(Integer id) {
         if (!Objects.isNull(findById(id))) {
-              repository.deleteById(id);
+              repository.deleteById(id); // se entrar, guest existe e será deletado
         }
-        throw new GuestNotFoundException(String.format("User with id[%d] not found!!", id));
+        if(id == null){
+            throw new IllegalArgumentException("Null id!");
+        }
     }
 
     public List<Guest> findByFilter(String name, String last_name, String cpf, Character gender){
+        if(name == null && last_name == null && cpf == null && gender == null){
+            throw new IllegalArgumentException("Tried to filter without a filter param.");
+        }
         return repository.findByFilter(name, last_name, cpf, gender);
     }
 
