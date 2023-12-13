@@ -8,6 +8,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(schema = "railway", name = "manager")
