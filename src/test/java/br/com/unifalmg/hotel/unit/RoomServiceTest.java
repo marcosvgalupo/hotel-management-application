@@ -1,6 +1,5 @@
 package br.com.unifalmg.hotel.unit;
 
-import br.com.unifalmg.hotel.entity.Reservation;
 import br.com.unifalmg.hotel.entity.Room;
 import br.com.unifalmg.hotel.exception.RoomNotFoundException;
 import br.com.unifalmg.hotel.repository.RoomRepository;
@@ -13,7 +12,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.mockito.internal.matchers.Null;
 
 import java.util.Optional;
 

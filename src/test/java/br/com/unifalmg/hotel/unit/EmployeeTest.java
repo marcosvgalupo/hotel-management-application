@@ -1,14 +1,10 @@
 package br.com.unifalmg.hotel.unit;
 
 import br.com.unifalmg.hotel.entity.Employee;
-import br.com.unifalmg.hotel.entity.Guest;
 import br.com.unifalmg.hotel.entity.Manager;
 import br.com.unifalmg.hotel.exception.EmployeeNotFoundException;
-import br.com.unifalmg.hotel.exception.GuestNotFoundException;
 import br.com.unifalmg.hotel.repository.EmployeeRepository;
-import br.com.unifalmg.hotel.repository.GuestRepository;
 import br.com.unifalmg.hotel.service.EmployeeService;
-import br.com.unifalmg.hotel.service.GuestService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
