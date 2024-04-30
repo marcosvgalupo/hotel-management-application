@@ -4,7 +4,7 @@
 ![GitHub language count](https://img.shields.io/github/languages/count/marcosvgalupo/hotel-management-application?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/marcosvgalupo/hotel-management-application?style=for-the-badge)
 
-<img src="imagem.png" alt="Exemplo imagem">
+<img src="login-page.jpeg" alt="Exemplo imagem">
 
 > The project's goal is to afford and application able to manage hotel environment.
 
